@@ -1,5 +1,5 @@
 <template>
-  <div id="app"  align="app">
+  <div id="app"  align="app" style="margin: 0px;padding: 0px;">
     <!--<img src="./assets/logo.png">-->
     <router-view></router-view>
   </div>
@@ -18,6 +18,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+  body{
+    margin: 0px;
+    padding: 0px;
+  }
 </style>
