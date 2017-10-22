@@ -3,11 +3,13 @@
     <el-header>
       <pcHeader></pcHeader>
     </el-header>
-    <el-container>
-      <el-aside width="20%"> <left></left></el-aside>
-      <el-main>Main</el-main>
-      <el-footer>Footer</el-footer>
+    <el-container style="height: 600px; border: 1px solid #eee">
+      <el-aside width="20%">
+        <left></left>
+      </el-aside>
+      <el-main style="background-color: aqua">Main</el-main>
     </el-container>
+    <el-footer style="background-color: blanchedalmond">Footer</el-footer>
   </el-container>
 </template>
 <script>
