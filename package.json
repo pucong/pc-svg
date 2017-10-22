@@ -14,7 +14,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "element-ui": "^2.0.0-alpha.1",
+    "element-ui": "^2.0.0-beta.1",
     "superagent": "^3.6.3",
     "vue": "^2.4.2",
     "vue-i18n": "^7.3.1",
