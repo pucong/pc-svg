@@ -7,6 +7,8 @@
                    :top="top"
                    :absolute="absolute"
                    :pc-width="pcWidth"
+                   :footer-font="footerFont"
+                   :input-font="inputFont"
                    :pc-height="pcHeight"
       ></innerCircle>
     </div>
@@ -39,6 +41,14 @@
       innerColor: { // 圆的颜色
         type: String,
         default: 'red'
+      },
+      footerFont: { // 脚部文字
+        type: String,
+        default: '圆'
+      },
+      inputFont: { // 圆内文字
+        type: String,
+        default: '内容'
       },
       absolute: { // 位置模式 false为在展示栏 true为在拖动栏
         type: Boolean,

@@ -3,11 +3,12 @@
       <el-input
         size="mini"
         type="textarea"
-        :rows="inputModel.inputRows"
         placeholder="请输入内容"
         v-if="inputModel.showInput"
         v-bind:style="inputStyleObject"
         autofocus
+        autosize
+        resize="none"
         @blur="inputBlurFunction"
         v-model="inputModel.inputValue">
       </el-input>

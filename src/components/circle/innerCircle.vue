@@ -5,18 +5,19 @@
           <el-input
             size='mini'
             type='textarea'
-            :rows='inputModel.inputRows'
             placeholder='请输入内容'
             v-if='inputModel.showInput'
             v-bind:style='inputStyleObject'
             autofocus
+            autosize
+            resize="none"
             @blur='inputBlurFunction'
             v-model='inputModel.inputValue'>
           </el-input>
-          <span v-if='!inputModel.showInput'> {{ inputModel.inputValue }} </span>
+          <span v-if='!inputModel.showInput' v-bind:style='spanStyleObject'> {{ inputModel.inputValue }} </span>
         </div>
       </div>
-      <footerFont font='圆' :font-size='fontSize' :pc-width='pcWidth'  :absolute='absolute' style='background-color: rgba(250, 250, 250, 0);'></footerFont>
+      <footerFont :font='footerFont' :font-size='fontSize' :pc-width='pcWidth'  :absolute='absolute' style='background-color: rgba(250, 250, 250, 0);'></footerFont>
     </div>
 </template>
 <script>
@@ -50,6 +51,14 @@
         type: Boolean,
         default: false
       },
+      footerFont: { // 底部文字
+        type: String,
+        default: '圆'
+      },
+      inputFont: { // 圆内文字
+        type: String,
+        default: '内容'
+      },
       circleId: {  // 圆card id
         type: String,
         default: '2asd123'
@@ -72,17 +81,27 @@
           height: this.pcHeight + 'px',
           'background-color': this.innerColor,
           'align-content': 'center',
-          'line-height': this.pcHeight + 'px',
           'border-radius': '50%',
           '-moz-border-radius': '50%',
-          '-webkit-border-radius': '50%'
+          '-webkit-border-radius': '50%',
+          display: 'table-cell',
+          'vertical-align': 'middle',
+          'text-align': 'center'
         },
         inputStyleObject: { // 输入框样式
           width: this.pcWidth - 5 + 'px'
         },
+        spanStyleObject: { // 内容span样式
+          display: 'block',
+          width: 'auto',
+          'white-space': 'pre-wrap',
+          'word-wrap': 'break-word ',
+          'overflow': 'hidden',
+          'word-break': 'normal'
+        },
         fontSize: 10, // 所有字体大小
         inputModel: { // 输入框属性
-          inputValue: '1231', // 输入的值
+          inputValue: this.inputFont, // 输入的值
           inputRows: 1, // 行数
           showInput: false  // 是否显示输入框，否则显示文字
         }
@@ -91,24 +110,18 @@
     methods: {
       inputBlurFunction: function (event) { // 输入框离焦事件
         this.inputModel.showInput = false
-        this.circleInnerStyleObject['line-height'] = this.pcHeight + 'px'
+        this.inputModel.inputRows = this.inputModel.inputValue.length / 6
       }
     },
     mounted: function () {
       var _this = this
       var $this = $('#' + this.circleId)
       // 实现双击显示输入框
-      $this.find('span').dblclick(function () {
+      $this.dblclick(function () {
         if (_this.absolute) {
-          if (_this.pcHeight < 50) {
-            return false
+          if (!_this.pcHeight < 50) {
+            _this.inputModel.showInput = true
           }
-          _this.inputModel.showInput = true
-          let alignHeight = _this.pcHeight - _this.inputModel.inputRows * 30
-          if (alignHeight < 0) {
-            alignHeight = 0
-          }
-          _this.circleInnerStyleObject['line-height'] = alignHeight + 'px'
         }
       })
       // 实现单机输入框消失
