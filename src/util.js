@@ -1,52 +1,16 @@
-import superagent from 'superagent'
+// import superagent from 'superagent'
 
-var types = require('@/store/types')
+// var types = require('@/store/types')
 
 export default {
-  async ajaxPost (opt) {
-    var url = opt.url
-    var params = opt.params
-
-    superagent('POST', types.CTX_API_JAVA + url) // 这里的URL也可以是绝对路径
-      .type('application/json')
-      // .type('form')//表单提交
-      .send(params)
-      .end(function (req, res) {
-        console.log(req, res)
-      })
+  // 生成唯一id
+  getUuid: function (str) {
+    return str + this.guid()
   },
-  async ajaxGet (opt) {
-    var url = opt.url
-    var params = opt.params
-
-    superagent('GET', types.CTX_API_JAVA + url) // 这里的URL也可以是绝对路径
-      .type('application/json')
-      .query(params)// 参数
-      .end(function (req, res) {
-        console.log(req, res)
-      })
+  guid: function () {
+    return this.getCode() + '_' + this.getCode() + '_' + this.getCode()
   },
-  ajaxFrom (opt) {
-    var url = opt.url
-    var params = opt.params
-
-    // return new Promise(function (resolve, reject) {
-    superagent.post(types.CTX_API_JAVA + url) // 这里的URL也可以是绝对路径
-      .set('Access-Control-Allow-Origin', '*')// 设置请求头来源
-      .set('Access-Control-Allow-Headers', 'X-Requested-With')// 设置请求头
-      .set('dataType', 'jsonp')// 设置请求头
-      .set('Content-Type', 'application/json')
-    //   .type('form')// 表单提交
-      .send(params)
-      .end(function (req, res) {
-        debugger
-        console.log(res)
-        // if (res.statusCode === 200) {
-        //   resolve({status: true, res: res.body})
-        // } else {
-        //   resolve({status: false, res: res})
-        // }
-      })
-    // })
+  getCode: function () {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)
   }
 }
