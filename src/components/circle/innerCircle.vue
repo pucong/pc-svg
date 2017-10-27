@@ -98,7 +98,7 @@
       var _this = this
       var $this = $('#' + this.circleId)
       // 实现双击显示输入框
-      $this.dblclick(function () {
+      $this.find('span').dblclick(function () {
         if (_this.absolute) {
           if (_this.pcHeight < 50) {
             return false
