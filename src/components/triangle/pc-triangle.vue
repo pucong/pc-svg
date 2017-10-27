@@ -1,26 +1,26 @@
 <template>
   <pcOuter :left='left' :top='top' :pc-width='pcWidth' :pc-height='pcHeight' :circle-id='circleId'
-            :footer-font='footerFont' input-font='inputFont' :absolute='absolute' :z-index="zIndex"
-            :inner-color='innerColor'>
-      <innerCircle :circle-id='circleId'
-                   :inner-color='innerColor'
-                   :left='left'
-                   :top='top'
-                   :absolute='absolute'
-                   :pc-width='pcWidth'
-                   :footer-font='footerFont'
-                   :input-font='inputFont'
-                   :pc-height='pcHeight'
-      ></innerCircle>
+           :footer-font='footerFont' input-font='inputFont' :absolute='absolute' :z-index="zIndex"
+           :inner-color='innerColor'>
+    <innerTriangle :circle-id='circleId'
+                 :inner-color='innerColor'
+                 :left='left'
+                 :top='top'
+                 :absolute='absolute'
+                 :pc-width='pcWidth'
+                 :footer-font='footerFont'
+                 :input-font='inputFont'
+                 :pc-height='pcHeight'
+    ></innerTriangle>
   </pcOuter>
 </template>
 <script>
-  import innerCircle from '@/components/circle/innerCircle'
+  import innerTriangle from '@/components/triangle/innerTriangle'
   import pcOuter from '@/components/common/outer'
   import util from '@/util.js'
 
   export default {
-    name: 'pc-circle',
+    name: 'pc-triangle',
     props: {
       zIndex: { // card优先级
         type: Number,
@@ -34,23 +34,23 @@
         type: Number,
         default: 10
       },
-      pcWidth: { // 圆宽度
+      pcWidth: { // 宽度
         type: Number,
         default: 40
       },
-      pcHeight: { // 圆高度
+      pcHeight: { // 高度
         type: Number,
         default: 40
       },
-      innerColor: { // 圆的颜色
+      innerColor: { // 颜色
         type: String,
         default: 'red'
       },
       footerFont: { // 脚部文字
         type: String,
-        default: '圆'
+        default: '三角形'
       },
-      inputFont: { // 圆内文字
+      inputFont: { // 内文字
         type: String,
         default: '内容'
       },
@@ -61,11 +61,11 @@
     },
     components: {
       pcOuter,
-      innerCircle
+      innerTriangle
     },
     data: function () {
       return {
-        circleId: util.getUuid('circle')
+        circleId: util.getUuid('triangle')
       }
     }
   }
