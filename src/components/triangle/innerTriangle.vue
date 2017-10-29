@@ -107,10 +107,9 @@
         return border
       },
       setPoints: function (x1, y1, x2, y2, x3, y3) {
-        return this.getPoint(x1 + y1) + ' ' + this.getPoint(x2 + y2) + ' ' + this.getPoint(x3 + y3)
+        return this.getPoint(x1, y1) + ' ' + this.getPoint(x2, y2) + ' ' + this.getPoint(x3, y3)
       },
       getPoint: function (x1, y1) {
-        debugger
         return x1 + ',' + y1
       }
     },
@@ -118,7 +117,8 @@
       // 点阵
       points: {
         get: function () {
-          var points = this.setPoints(0, this.pcHeight, this.pcWidth / 2, this.pcHeight, this.pcHeight, 0)
+          var points = this.setPoints(0, this.pcHeight, this.pcHeight, 0, this.pcWidth / 2, this.pcHeight)
+          console.log(points)
           return points
         },
         set: function (val) {
