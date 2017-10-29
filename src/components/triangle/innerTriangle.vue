@@ -3,30 +3,14 @@
       <!--这是图形-->
       <div v-bind:style='InnerSvgStyleObject'></div>
       <!--这是中间的字-->
-      <div v-bind:style='InnerFontStyleObject'>
-        <span v-bind:style="spanStyleObject" v-if='!inputModel.showInput'>
-          {{ inputModel.inputValue }}
-        </span>
-        <el-input
-          size='mini'
-          type='textarea'
-          placeholder='请输入'
-          v-if='inputModel.showInput'
-          v-bind:style='inputStyleObject'
-          autofocus
-          autosize
-          resize="none"
-          @blur='inputBlurFunction'
-          v-model='inputModel.inputValue'>
-        </el-input>
-      </div>
+      <inner-font :pc-height='pcHeight' :cardId='cardId' :input-font="inputFont" :pc-width='pcWidth' :absolute='absolute'></inner-font>
       <!--这是下面的字-->
       <footerFont :font='footerFont' :font-size='fontSize' :pc-width='pcWidth' :absolute='absolute' style='background-color: rgba(250, 250, 250, 0);'></footerFont>
     </div>
 </template>
 <script>
   import footerFont from '@/components/common/footerFont'
-  import $ from 'jquery'
+  import innerFont from '@/components/triangle/innerFont'
 
   export default {
     name: 'inner-triangle',
@@ -63,12 +47,13 @@
         type: String,
         default: '内容'
       },
-      circleId: {  // card id
+      cardId: {  // card id
         type: String,
         default: '2asd123'
       }
     },
     components: {
+      innerFont,
       footerFont
     },
     data () {
@@ -87,26 +72,6 @@
           'border-left': this.pcHeight / 2 + 'px solid transparent',
           'border-right': this.pcHeight / 2 + 'px solid transparent'
         },
-        InnerFontStyleObject: { // 内容样式
-          'position': 'absolute',
-          'top': '6px',
-          'left': '3px',
-          'align-content': 'center',
-          display: 'table-cell',
-          'vertical-align': 'middle',
-          'text-align': 'center'
-        },
-        spanStyleObject: { // 内容span样式
-          display: 'block',
-          width: 'auto',
-          'white-space': 'pre-wrap',
-          'word-wrap': 'break-word ',
-          'overflow': 'hidden',
-          'word-break': 'normal'
-        },
-        inputStyleObject: { // 输入框样式
-
-        },
         fontSize: 10, // 所有字体大小
         inputModel: { // 输入框属性
           inputValue: this.inputFont, // 输入的值
@@ -119,59 +84,7 @@
       inputBlurFunction: function (event) { // 输入框离焦事件
         this.inputModel.showInput = false
         this.inputModel.inputRows = this.inputModel.inputValue.length / 6
-      },
-      getBorder: function () { // 根据勾股定理，得出等腰的边
-        var border = Math.pow(this.pcWidth / 2, 2) + Math.pow(this.pcHeight / 1, 2)
-        border = Math.sqrt(border)
-        return border
-      },
-      setPoints: function (x1, y1, x2, y2, x3, y3) {
-        return this.getPoint(x1, y1) + ' ' + this.getPoint(x2, y2) + ' ' + this.getPoint(x3, y3)
-      },
-      getPoint: function (x1, y1) {
-        return x1 + ',' + y1
       }
-    },
-    computed: {
-      // 点阵
-      points: {
-        get: function () {
-          var points = this.setPoints(0, this.pcHeight, this.pcHeight, 0, this.pcWidth / 2, this.pcHeight)
-          console.log(points)
-          return points
-        },
-        set: function (val) {
-          this.points = val
-        }
-      }
-    },
-    mounted: function () {
-      var _this = this
-      var $this = $('#' + this.circleId)
-      // 实现双击显示输入框
-      $this.dblclick(function () {
-        if (_this.absolute) {
-          if (!_this.pcHeight < 50) {
-            _this.inputModel.showInput = true
-          }
-        }
-      })
-      // 键盘事件消失
-      $('body').keydown(function (event) {
-        switch (event.keyCode) {
-          case 27: // ESC
-            _this.inputBlurFunction()
-            break
-          case 96: // ESC
-            _this.inputBlurFunction()
-            break
-        }
-      })
     }
   }
 </script>
-<style scoped>
-  .triangleHover:hover{
-    box-shadow: -111px 7px 10px #888888;
-  }
-</style>
