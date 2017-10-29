@@ -4,3 +4,11 @@
 .svgHover:hover{
   border: 1px solid black;
 }
+/*禁止选中文本*/
+div{
+  -moz-user-select:none;
+
+  -webkit-user-select:none;
+
+  user-select:none;
+}
