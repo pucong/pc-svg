@@ -1,13 +1,28 @@
 <template>
-  <div>
-   <svg width="100%" height="100%" version="1.1"
-         xmlns="http://www.w3.org/2000/svg">
-        <polygon :points="points"
-                 style="fill:#cccccc;
-                  stroke:#000000;stroke-width:1"
-        />
-    </svg>
-  </div>
+    <div v-bind:style='OutStyleObject' class='svgHover'>
+      <!--这是图形-->
+      <div v-bind:style='InnerSvgStyleObject'></div>
+      <!--这是中间的字-->
+      <div v-bind:style='InnerFontStyleObject'>
+        <span v-bind:style="spanStyleObject" v-if='!inputModel.showInput'>
+          {{ inputModel.inputValue }}
+        </span>
+        <el-input
+          size='mini'
+          type='textarea'
+          placeholder='请输入'
+          v-if='inputModel.showInput'
+          v-bind:style='inputStyleObject'
+          autofocus
+          autosize
+          resize="none"
+          @blur='inputBlurFunction'
+          v-model='inputModel.inputValue'>
+        </el-input>
+      </div>
+      <!--这是下面的字-->
+      <footerFont :font='footerFont' :font-size='fontSize' :pc-width='pcWidth' :absolute='absolute' style='background-color: rgba(250, 250, 250, 0);'></footerFont>
+    </div>
 </template>
 <script>
   import footerFont from '@/components/common/footerFont'
@@ -65,28 +80,32 @@
           'z-index': '100',
           opacity: '1'
         },
-        InnerStyleObject: { // 内部样式
+        InnerSvgStyleObject: { // 内部样式
           width: '0',
           height: '0',
-          'border-bottom': this.pcWidth + 'px solid ' + this.innerColor,
-          'border-left': this.getBorder() + 'px solid transparent',
-          'border-right': this.pcHeight + 'px solid transparent'
+          'border-bottom': this.pcWidth + 'px solid rgba(53, 109, 222, 0.3)',
+          'border-left': this.pcHeight / 2 + 'px solid transparent',
+          'border-right': this.pcHeight / 2 + 'px solid transparent'
         },
-        inputStyleObject: { // 输入框样式
-          width: this.pcWidth - 5 + 'px',
-          display: 'block',
-          'white-space': 'pre-wrap',
-          'word-wrap': 'break-word ',
-          'overflow': 'hidden',
-          'word-break': 'normal'
+        InnerFontStyleObject: { // 内容样式
+          'position': 'absolute',
+          'top': '6px',
+          'left': '3px',
+          'align-content': 'center',
+          display: 'table-cell',
+          'vertical-align': 'middle',
+          'text-align': 'center'
         },
         spanStyleObject: { // 内容span样式
           display: 'block',
-          width: this.pcWidth - 5 + 'px',
+          width: 'auto',
           'white-space': 'pre-wrap',
           'word-wrap': 'break-word ',
           'overflow': 'hidden',
           'word-break': 'normal'
+        },
+        inputStyleObject: { // 输入框样式
+
         },
         fontSize: 10, // 所有字体大小
         inputModel: { // 输入框属性
