@@ -1,8 +1,8 @@
 <template>
-  <pcOuter :left='left' :top='top' :pc-width='pcWidth' :pc-height='pcHeight' :circle-id='circleId'
+  <pcOuter :left='left' :top='top' :pc-width='pcWidth' :pc-height='pcHeight' :card-id='cardId'
            :footer-font='footerFont' input-font='inputFont' :absolute='absolute' :z-index="zIndex"
            :inner-color='innerColor'>
-    <innerRect :circle-id='circleId'
+    <innerRect :card-id='cardId'
                  :inner-color='innerColor'
                  :left='left'
                  :top='top'
@@ -65,7 +65,7 @@
     },
     data: function () {
       return {
-        circleId: util.getUuid('rect')
+        cardId: util.getUuid('rect')
       }
     }
   }

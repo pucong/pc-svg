@@ -59,7 +59,7 @@
         type: String,
         default: '内容'
       },
-      circleId: {  // 圆card id
+      cardId: {  // 圆card id
         type: String,
         default: '2asd123'
       }
@@ -115,7 +115,7 @@
     },
     mounted: function () {
       var _this = this
-      var $this = $('#' + this.circleId)
+      var $this = $('#' + this.cardId)
       // 实现双击显示输入框
       $this.dblclick(function () {
         if (_this.absolute) {

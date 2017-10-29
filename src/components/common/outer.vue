@@ -1,5 +1,5 @@
 <template>
-  <el-card :body-style="cardBodyStyle" v-bind:style="cardStyleObject" :id="circleId">
+  <el-card :body-style="cardBodyStyle" v-bind:style="cardStyleObject" :id="cardId">
     <div align="center" v-bind:style="centerStyleObject">
       <slot></slot>
     </div>
@@ -44,7 +44,7 @@
         type: String,
         default: '内容'
       },
-      circleId: { // 圆内文字
+      cardId: { // card Id
         type: String,
         default: 'asdasd12'
       },
@@ -98,7 +98,7 @@
     },
     mounted: function () {
       var _this = this
-      var $this = $('#' + this.circleId)
+      var $this = $('#' + this.cardId)
       var model = this.dialogModel
       // 实现拖动效果
       $this.mousedown(function (e) {
