@@ -1,14 +1,9 @@
 <template>
-    <div>
-      <div v-bind:style='circleInnerStyleObject'>
+    <div v-bind:style='circleInnerStyleObject'>
 
-      </div>
     </div>
 </template>
 <script>
-  import footerFont from '@/components/common/footerFont'
-  import $ from 'jquery'
-
   export default {
     name: 'circle',
     props: {
@@ -19,30 +14,26 @@
       pcHeight: { // 圆高度
         type: Number,
         default: 40
+      },
+      innerColor: { // 内部颜色
+        type: String,
+        default: ''
       }
-    },
-    components: {
-      footerFont
     },
     data () {
       return {
         circleInnerStyleObject: { // 圆的内部样式
+          position: 'absolute',
+//          'position': 'relative',
+
           width: this.pcWidth + 'px',
           height: this.pcHeight + 'px',
           'background-color': this.innerColor,
-          'align-content': 'center',
           'border-radius': '50%',
           '-moz-border-radius': '50%',
-          '-webkit-border-radius': '50%',
-          display: 'table-cell',
-          'vertical-align': 'middle',
-          'text-align': 'center'
+          '-webkit-border-radius': '50%'
         }
       }
-    },
-    methods: {
-    },
-    mounted: function () {
     }
   }
 </script>

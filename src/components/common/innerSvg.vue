@@ -1,7 +1,7 @@
 <template>
   <div v-bind:style='OutStyleObject'>
     <!--这是图形-->
-    <circle></circle>
+    <pcCircle :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor'></pcCircle>
     <!--这是中间的字-->
     <inner-font :pc-height='pcHeight' :cardId='cardId' :input-font="inputFont" :pc-width='pcWidth' :absolute='absolute'></inner-font>
     <!--这是下面的字-->
@@ -10,10 +10,11 @@
 </template>
 <script>
   import footerFont from '@/components/common/footerFont'
-  import innerFont from '@/components/triangle/innerFont'
+  import innerFont from '@/components/common/innerFont'
+  import pcCircle from '@/components/circle/circle'
 
   export default {
-    name: 'inner-triangle',
+    name: 'inner-svg',
     props: {
       left: { // x坐标
         type: Number,
@@ -54,6 +55,7 @@
     },
     components: {
       innerFont,
+      pcCircle,
       footerFont
     },
     data () {

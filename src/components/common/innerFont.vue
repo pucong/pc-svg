@@ -1,7 +1,7 @@
 <template>
     <!--这是中间的字-->
     <div v-bind:style='InnerFontStyleObject'>
-      <span v-bind:style="spanStyleObject" v-if='!inputModel.showInput'>
+      <span v-if='!inputModel.showInput'>
         {{inputModel.inputValue }}
       </span>
       <el-input
@@ -48,13 +48,14 @@
     data () {
       return {
         InnerFontStyleObject: { // 内容样式
-          'position': 'absolute',
-          'top': '6px',
-          'left': '3px',
+          'position': 'relative',
+          left: '-4px',
+          width: this.pcWidth + 'px',
+          height: this.pcHeight + 'px',
           'align-content': 'center',
-          display: 'table-cell',
           'vertical-align': 'middle',
-          'text-align': 'center'
+          'text-align': 'center',
+          'display': 'table-cell'
         },
         inputStyleObject: { // 输入框样式
           width: this.pcWidth - 5 + 'px'
