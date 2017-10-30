@@ -10,7 +10,7 @@
   import $ from 'jquery'
 
   export default {
-    name: 'inner-circle',
+    name: 'circle',
     props: {
       pcWidth: { // 圆宽度
         type: Number,
