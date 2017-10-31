@@ -7,7 +7,7 @@
     <dTriangle  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='dTriangle'"></dTriangle>
     <lTriangle  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='lTriangle'"></lTriangle>
     <rTriangle  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='rTriangle'"></rTriangle>
-    <diamond    :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='diamond'"></diamond>
+    <pcDiamond  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='diamond'"></pcDiamond>
     <!--这是中间的字-->
     <inner-font :pc-height='pcHeight' :cardId='cardId' :input-font="inputFont" :pc-width='pcWidth' :absolute='absolute'></inner-font>
     <!--这是下面的字-->
@@ -23,7 +23,7 @@
   import dTriangle from '@/components/svg/dTriangle'
   import lTriangle from '@/components/svg/lTriangle'
   import rTriangle from '@/components/svg/rTriangle'
-  import diamond from '@/components/svg/diamond'
+  import pcDiamond from '@/components/svg/diamond'
 
   export default {
     name: 'inner-svg',
@@ -77,7 +77,7 @@
       dTriangle,
       lTriangle,
       rTriangle,
-      diamond,
+      pcDiamond,
       footerFont
     },
     data () {

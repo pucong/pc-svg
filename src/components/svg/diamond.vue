@@ -25,8 +25,8 @@
       return {
         innerStyleObject: { // 内部样式
           position: 'absolute',
-          width: this.pcWidth + 'px',
-          height: this.pcHeight + 'px',
+          width: this.getLeft() + 'px',
+          height: this.getLeft() + 'px',
           'background-color': this.innerColor,
           /* Rotate */
           '-webkit-transform': 'rotate(-45deg)',
@@ -35,13 +35,23 @@
           '-o-transform': 'rotate(-45deg)',
           'transform': 'rotate(-45deg)',
           /* Rotate Origin */
-          '-webkit-transform-origin': '0 100%',
-          '-moz-transform-origin': '0 100%',
-          '-ms-transform-origin': '0 100%',
-          '-o-transform-origin': '0 100%',
-          'transform-origin': '0 100%',
-          'margin': '60px 0 10px 310px'
+          '-webkit-transform-origin': '75% 20%',
+          '-moz-transform-origin': '75% 20%',
+          '-ms-transform-origin': '75% 20%',
+          '-o-transform-origin': '75% 20%',
+          'transform-origin': '75% 20%'
         }
+      }
+    },
+    methods: {
+        // 计算菱形的边长
+      getLeft: function () {
+        var height = this.pcHeight / 2
+        var width = this.pcWidth / 2
+        // 根据勾股定理，计算边长
+        var right = Math.pow(height, 2) + Math.pow(width, 2)
+        right = Math.sqrt(right)
+        return Math.ceil(right)
       }
     }
   }
