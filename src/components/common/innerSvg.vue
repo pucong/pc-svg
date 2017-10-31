@@ -1,7 +1,12 @@
 <template>
   <div v-bind:style='OutStyleObject'>
     <!--这是图形-->
-    <pcCircle :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor'></pcCircle>
+    <pcCircle :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='circle'"></pcCircle>
+    <pcRect :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='rect'"></pcRect>
+    <pcTriangle :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='triangle'"></pcTriangle>
+    <dTriangle :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='dTriangle'"></dTriangle>
+    <lTriangle :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='lTriangle'"></lTriangle>
+    <rTriangle :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='rTriangle'"></rTriangle>
     <!--这是中间的字-->
     <inner-font :pc-height='pcHeight' :cardId='cardId' :input-font="inputFont" :pc-width='pcWidth' :absolute='absolute'></inner-font>
     <!--这是下面的字-->
@@ -11,7 +16,12 @@
 <script>
   import footerFont from '@/components/common/footerFont'
   import innerFont from '@/components/common/innerFont'
-  import pcCircle from '@/components/circle/circle'
+  import pcCircle from '@/components/svg/circle'
+  import pcRect from '@/components/svg/rect'
+  import pcTriangle from '@/components/svg/triangle'
+  import dTriangle from '@/components/svg/dTriangle'
+  import lTriangle from '@/components/svg/lTriangle'
+  import rTriangle from '@/components/svg/rTriangle'
 
   export default {
     name: 'inner-svg',
@@ -46,16 +56,25 @@
       },
       inputFont: { // 内文字
         type: String,
-        default: '内容'
+        default: ''
       },
       cardId: {  // card id
         type: String,
         default: '2asd123'
+      },
+      type: {
+        type: String,
+        default: 'rect'
       }
     },
     components: {
       innerFont,
       pcCircle,
+      pcRect,
+      pcTriangle,
+      dTriangle,
+      lTriangle,
+      rTriangle,
       footerFont
     },
     data () {

@@ -1,5 +1,6 @@
+<!--这是矩形-->
 <template>
-    <div v-bind:style='circleInnerStyleObject'>
+    <div v-bind:style='innerStyleObject'>
 
     </div>
 </template>
@@ -7,11 +8,11 @@
   export default {
     name: 'circle',
     props: {
-      pcWidth: { // 圆宽度
+      pcWidth: { // 宽度
         type: Number,
         default: 40
       },
-      pcHeight: { // 圆高度
+      pcHeight: { // 高度
         type: Number,
         default: 40
       },
@@ -22,16 +23,11 @@
     },
     data () {
       return {
-        circleInnerStyleObject: { // 圆的内部样式
+        innerStyleObject: { // 内部样式
           position: 'absolute',
-//          'position': 'relative',
-
           width: this.pcWidth + 'px',
           height: this.pcHeight + 'px',
-          'background-color': this.innerColor,
-          'border-radius': '50%',
-          '-moz-border-radius': '50%',
-          '-webkit-border-radius': '50%'
+          'background-color': this.innerColor
         }
       }
     }

@@ -6,6 +6,7 @@
                  :inner-color='innerColor'
                  :left='left'
                  :top='top'
+                 :type='type'
                  :absolute='absolute'
                  :pc-width='pcWidth'
                  :footer-font='footerFont'
@@ -52,11 +53,15 @@
       },
       inputFont: { // 圆内文字
         type: String,
-        default: '内容'
+        default: ''
       },
       absolute: { // 位置模式 false为在展示栏 true为在拖动栏
         type: Boolean,
         default: false
+      },
+      type: { // 图形样式 circle 圆，rect 矩形，star 星形，triangle等腰三角形
+        type: String,
+        default: 'rect'
       }
     },
     components: {

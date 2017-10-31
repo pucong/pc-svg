@@ -6,7 +6,6 @@
   </el-card>
 </template>
 <script>
-  import innerCircle from '@/components/circle/innerCircle'
   import $ from 'jquery'
 
   export default {
@@ -79,9 +78,6 @@
           _move: false
         }
       }
-    },
-    components: {
-      innerCircle
     },
     methods: {
       // 获取当前位置

@@ -12,7 +12,7 @@
         @blur="inputBlurFunction"
         v-model="inputModel.inputValue">
       </el-input>
-      <span v-if="!inputModel.showInput">{{ inputModel.inputValue }}</span>
+      <span v-bind:style='spanStyleObject' v-if="!inputModel.showInput">{{ inputModel.inputValue }}</span>
     </div>
 </template>
 <script>
@@ -47,6 +47,15 @@
         },
         inputStyleObject: { // 输入框样式
           width: this.pcWidth - 5 + 'px'
+        },
+        spanStyleObject: { // span样式
+          display: 'block',
+          width: this.pcWidth + 'px',
+          height: this.pcHeight + 'px',
+          'white-space': 'pre-wrap',
+          'word-wrap': 'break-word ',
+          'overflow': 'hidden',
+          'word-break': 'normal'
         },
         footerId: util.getUuid('footer'),
         inputModel: {

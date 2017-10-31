@@ -1,7 +1,7 @@
 <template>
     <!--这是中间的字-->
     <div v-bind:style='InnerFontStyleObject'>
-      <span v-if='!inputModel.showInput'>
+      <span v-bind:style='spanStyleObject' v-if='!inputModel.showInput'>
         {{inputModel.inputValue }}
       </span>
       <el-input
@@ -38,7 +38,7 @@
       },
       inputFont: {  // 输入的值
         type: String,
-        default: '默认值'
+        default: ''
       },
       cardId: {  // card id
         type: String,
@@ -49,12 +49,13 @@
       return {
         InnerFontStyleObject: { // 内容样式
           'position': 'relative',
-          left: '-4px',
+          left: '-5px',
           width: this.pcWidth + 'px',
           height: this.pcHeight + 'px',
           'align-content': 'center',
           'vertical-align': 'middle',
           'text-align': 'center',
+          'line-height': '20px',
           'display': 'table-cell'
         },
         inputStyleObject: { // 输入框样式
@@ -62,7 +63,8 @@
         },
         spanStyleObject: { // 内容span样式
           display: 'block',
-          width: 'auto',
+          width: this.pcWidth + 'px',
+          height: this.pcHeight + 'px',
           'white-space': 'pre-wrap',
           'word-wrap': 'break-word ',
           'overflow': 'hidden',
