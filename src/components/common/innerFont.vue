@@ -87,13 +87,15 @@
       var _this = this
       var $this = $('#' + this.cardId)
       // 实现双击显示输入框
-      $this.dblclick(function () {
-        if (_this.absolute) {
-          if (!_this.pcHeight < 50) {
-            _this.inputModel.showInput = true
+      if (this.inputFont !== '') {
+        $this.dblclick(function () {
+          if (_this.absolute) {
+            if (!_this.pcHeight < 50) {
+              _this.inputModel.showInput = true
+            }
           }
-        }
-      })
+        })
+      }
       // 键盘事件消失
       $('body').keydown(function (event) {
         switch (event.keyCode) {

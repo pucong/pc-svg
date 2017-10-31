@@ -5,6 +5,8 @@
     </div>
 </template>
 <script>
+  import util from '@/util.js'
+
   export default {
     name: 'diamond',
     props: {
@@ -46,12 +48,11 @@
     methods: {
         // 计算菱形的边长
       getLeft: function () {
-        var height = this.pcHeight / 2
-        var width = this.pcWidth / 2
+        var height = this.pcHeight
+//        var width = this.pcWidth
         // 根据勾股定理，计算边长
-        var right = Math.pow(height, 2) + Math.pow(width, 2)
-        right = Math.sqrt(right)
-        return Math.ceil(right)
+        var three = util.gouGuFunctionThree(height)
+        return three
       }
     }
   }

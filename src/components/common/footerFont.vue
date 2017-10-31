@@ -77,11 +77,13 @@
       var _this = this
       var $this = $('#' + this.footerId)
       // 实现双击显示输入框
-      $this.click(function () {
-        if (_this.absolute) {
-          _this.inputModel.showInput = true
-        }
-      })
+      if (this.font !== '') {
+        $this.click(function () {
+          if (_this.absolute) {
+            _this.inputModel.showInput = true
+          }
+        })
+      }
       // 键盘事件消失
       $('body').keydown(function (event) {
         switch (event.keyCode) {
