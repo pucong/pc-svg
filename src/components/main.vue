@@ -26,6 +26,10 @@
 </script>
 <style scoped>
   .pcMain{
-    position: relative
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/bg.png') #fff;
   }
 </style>

@@ -4,10 +4,10 @@
       <pcHeader></pcHeader>
     </el-header>
     <el-container style="height: 600px; border: 1px solid #eee">
-      <el-aside width="20%" style="border-right: 5px solid rgba(53, 109, 222, 0.54);">
+      <el-aside width="15%" style="border-right: 5px solid rgba(53, 109, 222, 0.54);">
         <pcleft></pcleft>
       </el-aside>
-      <el-main style="background-color: rgba(243, 243, 235, 0.4);">
+      <el-main style="padding: 0;">
         <pcMain></pcMain>
       </el-main>
     </el-container>
