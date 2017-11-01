@@ -3,8 +3,8 @@
     <el-header style="height: auto">
       <pcHeader></pcHeader>
     </el-header>
-    <el-container style="height: 75%; border: 1px solid #eee">
-      <el-aside width="15%" style="border-right: 5px solid rgba(53, 109, 222, 0.54);">
+    <el-container style="height: 85%; border: 1px solid #eee">
+      <el-aside width="15%" style="border-right: 2px solid rgba(53, 109, 222, 0.54);position: relative;">
         <pcleft></pcleft>
       </el-aside>
       <el-main style="padding: 0;">

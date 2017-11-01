@@ -1,7 +1,6 @@
 <template>
   <outer :left='left' :top='top' :pc-width='pcWidth' :pc-height='pcHeight' :card-id='cardId'
-           :footer-font='footerFont' input-font='inputFont' :absolute='absolute' :z-index="zIndex"
-           :inner-color='innerColor'>
+           :absolute='absolute' :z-index="zIndex" :inner-color='innerColor' :shw-foot-font='shwFootFont'>
     <innerSvg :card-id='cardId'
                  :inner-color='innerColor'
                  :left='left'
@@ -39,11 +38,11 @@
       },
       pcWidth: { // 圆宽度
         type: Number,
-        default: 40
+        default: 20
       },
       pcHeight: { // 圆高度
         type: Number,
-        default: 40
+        default: 20
       },
       innerColor: { // 圆的颜色
         type: String,

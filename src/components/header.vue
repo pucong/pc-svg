@@ -2,10 +2,10 @@
   <el-menu
     :default-active="activeIndex"
     mode="horizontal"
-    background-color="#545c64"
-    text-color="#fff"
+    background-color="#fff"
+    text-color="#545c64"
     active-text-color="#ffd04b">
-    <el-menu-item index="1">处理中心</el-menu-item>
+    <el-menu-item index="1">隐藏左侧栏</el-menu-item>
     <el-menu-item index="2">处理中心</el-menu-item>
     <el-menu-item index="3">处理中心</el-menu-item>
   </el-menu>
@@ -21,8 +21,3 @@
     }
   }
 </script>
-<style>
-  .el-header {
-    padding: 0px;
-  }
-</style>
