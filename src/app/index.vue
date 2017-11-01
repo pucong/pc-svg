@@ -1,9 +1,9 @@
 <template>
-  <el-container>
-    <el-header>
+  <el-container style="height: 100%;">
+    <el-header style="height: auto">
       <pcHeader></pcHeader>
     </el-header>
-    <el-container style="height: 600px; border: 1px solid #eee">
+    <el-container style="height: 75%; border: 1px solid #eee">
       <el-aside width="15%" style="border-right: 5px solid rgba(53, 109, 222, 0.54);">
         <pcleft></pcleft>
       </el-aside>
@@ -11,7 +11,7 @@
         <pcMain></pcMain>
       </el-main>
     </el-container>
-    <el-footer style="background-color: #545c64">
+    <el-footer style="height: 5%;background-color: #545c64">
 
     </el-footer>
   </el-container>
