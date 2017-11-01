@@ -1,5 +1,5 @@
 <template>
-    <div v-bind:style="fontSizeObj" :id="footerId">
+    <div v-bind:style="fontSizeObj" :id="footerId" v-if="shwFootFont">
       <el-input
         size="mini"
         type="textarea"
@@ -24,13 +24,17 @@
     props: {
       font: { // 文字
         type: String,
-        default: '图形'
+        default: ''
       },
       pcWidth: { // 圆宽度
         type: Number,
         default: 40
       },
       absolute: { // 是否是在右侧显示
+        type: Boolean,
+        default: false
+      },
+      shwFootFont: { // 是否显示脚部的文字
         type: Boolean,
         default: false
       },
@@ -60,7 +64,7 @@
         footerId: util.getUuid('footer'),
         inputModel: {
           inputRows: 1,
-          inputValue: this.font,
+          inputValue: this.absolute ? this.font : '',
           showInput: false
         }
       }

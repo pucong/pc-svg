@@ -9,9 +9,9 @@
     <rTriangle  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='rTriangle'"></rTriangle>
     <pcDiamond  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='diamond'"></pcDiamond>
     <!--这是中间的字-->
-    <inner-font :pc-height='pcHeight' :cardId='cardId' :input-font="inputFont" :pc-width='pcWidth' :absolute='absolute'></inner-font>
+    <inner-font :pc-height='pcHeight' :shw-inner-font="shwInnerFont" :cardId='cardId' :input-font="inputFont" :pc-width='pcWidth' :absolute='absolute'></inner-font>
     <!--这是下面的字-->
-    <footerFont :font='footerFont' :font-size='fontSize' :pc-width='pcWidth' :absolute='absolute' style='background-color: rgba(250, 250, 250, 0);'></footerFont>
+    <footerFont :font='footerFont' :shw-foot-font="shwFootFont" :font-size='fontSize' :pc-width='pcWidth' :absolute='absolute' style='background-color: rgba(250, 250, 250, 0);'></footerFont>
   </div>
 </template>
 <script>
@@ -51,6 +51,14 @@
       absolute: { // 位置模式 false为在展示栏 true为在拖动栏
         type: Boolean,
         default: false
+      },
+      shwFootFont: { // 显示脚部文字
+        type: Boolean,
+        default: false
+      },
+      shwInnerFont: { // 显示内部文字
+        type: Boolean,
+        default: true
       },
       footerFont: { // 底部文字
         type: String,

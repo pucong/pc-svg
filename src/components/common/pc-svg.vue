@@ -12,6 +12,8 @@
                  :footer-font='footerFont'
                  :input-font='inputFont'
                  :pc-height='pcHeight'
+                 :shw-foot-font='shwFootFont'
+                 :shw-inner-font='shwInnerFont'
     ></innerSvg>
   </outer>
 </template>
@@ -49,7 +51,7 @@
       },
       footerFont: { // 脚部文字
         type: String,
-        default: '圆'
+        default: ''
       },
       inputFont: { // 圆内文字
         type: String,
@@ -58,6 +60,14 @@
       absolute: { // 位置模式 false为在展示栏 true为在拖动栏
         type: Boolean,
         default: false
+      },
+      shwFootFont: { // 显示脚部的文字
+        type: Boolean,
+        default: false
+      },
+      shwInnerFont: { // 显示内部的文字
+        type: Boolean,
+        default: true
       },
       type: { // 图形样式 circle 圆，rect 矩形，star 星形，triangle等腰三角形
         type: String,

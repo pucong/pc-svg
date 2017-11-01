@@ -1,6 +1,6 @@
 <template>
     <!--这是中间的字-->
-    <div v-bind:style='InnerFontStyleObject'>
+    <div v-bind:style='InnerFontStyleObject' v-if="shwInnerFont">
       <span v-bind:style='spanStyleObject' v-if='!inputModel.showInput'>
         {{inputModel.inputValue }}
       </span>
@@ -35,6 +35,10 @@
       absolute: { // 位置模式 false为在展示栏 true为在拖动栏
         type: Boolean,
         default: false
+      },
+      shwInnerFont: { // 是否显示内部文字
+        type: Boolean,
+        default: true
       },
       inputFont: {  // 输入的值
         type: String,
