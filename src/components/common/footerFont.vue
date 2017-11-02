@@ -30,9 +30,9 @@
         type: Number,
         default: 40
       },
-      absolute: { // 是否是在右侧显示
-        type: Boolean,
-        default: false
+      position: { // 位置模式 relative为在展示栏 absolute为在拖动栏、点击出现图标
+        type: String,
+        default: 'relative'
       },
       shwFootFont: { // 是否显示脚部的文字
         type: Boolean,
@@ -64,7 +64,7 @@
         footerId: util.getUuid('footer'),
         inputModel: {
           inputRows: 1,
-          inputValue: this.absolute ? this.font : '',
+          inputValue: this.position === 'relative' ? this.font : '',
           showInput: false
         }
       }
@@ -83,7 +83,7 @@
       // 实现双击显示输入框
       if (this.font !== '') {
         $this.click(function () {
-          if (_this.absolute) {
+          if (_this.position === 'relative') {
             _this.inputModel.showInput = true
           }
         })

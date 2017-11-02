@@ -1,18 +1,19 @@
 <template>
   <outer :left='left' :top='top' :pc-width='pcWidth' :pc-height='pcHeight' :card-id='cardId'
-           :absolute='absolute' :z-index="zIndex" :inner-color='innerColor' :shw-foot-font='shwFootFont'>
+           :position='position' :z-index="zIndex" :inner-color='innerColor' :shw-foot-font='shwFootFont'>
     <innerSvg :card-id='cardId'
                  :inner-color='innerColor'
                  :left='left'
                  :top='top'
                  :type='type'
-                 :absolute='absolute'
+                 :position='position'
                  :pc-width='pcWidth'
                  :footer-font='footerFont'
                  :input-font='inputFont'
                  :pc-height='pcHeight'
                  :shw-foot-font='shwFootFont'
                  :shw-inner-font='shwInnerFont'
+                  @clickSvg="clickSvg"
     ></innerSvg>
   </outer>
 </template>
@@ -56,9 +57,9 @@
         type: String,
         default: ''
       },
-      absolute: { // 位置模式 false为在展示栏 true为在拖动栏
-        type: Boolean,
-        default: false
+      position: { // 位置模式 relative为在展示栏 absolute为在拖动栏、点击出现图标
+        type: String,
+        default: 'relative'
       },
       shwFootFont: { // 显示脚部的文字
         type: Boolean,
@@ -80,6 +81,11 @@
     data: function () {
       return {
         cardId: util.getUuid('circle')
+      }
+    },
+    methods: {
+      clickSvg: function () { // 点击图形事件
+        console.log('触发事件了' + this.type)
       }
     }
   }

@@ -32,9 +32,9 @@
         type: Number,
         default: 40
       },
-      absolute: { // 位置模式 false为在展示栏 true为在拖动栏
-        type: Boolean,
-        default: false
+      position: { // 位置模式 relative为在展示栏 absolute为在拖动栏、点击出现图标
+        type: String,
+        default: 'relative'
       },
       shwInnerFont: { // 是否显示内部文字
         type: Boolean,
@@ -94,7 +94,7 @@
       // 实现双击显示输入框
       if (this.inputFont !== '') {
         $this.dblclick(function () {
-          if (_this.absolute) {
+          if (_this.position === 'relative') {
             if (!_this.pcHeight < 50) {
               _this.inputModel.showInput = true
             }

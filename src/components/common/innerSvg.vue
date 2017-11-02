@@ -1,5 +1,5 @@
 <template>
-  <div v-bind:style='OutStyleObject'>
+  <div v-bind:style='OutStyleObject' :id="outerSvgId">
     <!--这是图形-->
     <pcCircle   :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='circle'"></pcCircle>
     <pcRect     :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='rect'"></pcRect>
@@ -11,9 +11,9 @@
     <pcTrapezium  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='trapezium'"></pcTrapezium>
     <pcParallelogram  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='parallelogram'"></pcParallelogram>
     <!--这是中间的字-->
-    <inner-font :pc-height='pcHeight' :shw-inner-font="shwInnerFont" :cardId='cardId' :input-font="inputFont" :pc-width='pcWidth' :absolute='absolute'></inner-font>
+    <inner-font :pc-height='pcHeight' :shw-inner-font="shwInnerFont" :cardId='cardId' :input-font="inputFont" :pc-width='pcWidth' :position='position'></inner-font>
     <!--这是下面的字-->
-    <footerFont :font='footerFont' :shw-foot-font="shwFootFont" :font-size='fontSize' :pc-width='pcWidth' :absolute='absolute' style='background-color: rgba(250, 250, 250, 0);'></footerFont>
+    <footerFont :font='footerFont' :shw-foot-font="shwFootFont" :font-size='fontSize' :pc-width='pcWidth' :position='position' style='background-color: rgba(250, 250, 250, 0);'></footerFont>
   </div>
 </template>
 <script>
@@ -28,6 +28,8 @@
   import pcDiamond from '@/components/svg/diamond'
   import pcTrapezium from '@/components/svg/trapezium'
   import pcParallelogram from '@/components/svg/parallelogram'
+  import $ from 'jquery'
+  import util from '@/util.js'
 
   export default {
     name: 'inner-svg',
@@ -52,9 +54,9 @@
         type: String,
         default: 'red'
       },
-      absolute: { // 位置模式 false为在展示栏 true为在拖动栏
-        type: Boolean,
-        default: false
+      position: { // 位置模式 relative为在展示栏 absolute为在拖动栏、点击出现图标
+        type: String,
+        default: 'relative'
       },
       shwFootFont: { // 显示脚部文字
         type: Boolean,
@@ -111,6 +113,7 @@
           'border-right': this.pcHeight / 2 + 'px solid transparent'
         },
         fontSize: 10, // 所有字体大小
+        outerSvgId: util.getUuid('outerSvg'),
         inputModel: { // 输入框属性
           inputValue: this.inputFont, // 输入的值
           inputRows: 1, // 行数
@@ -123,6 +126,14 @@
         this.inputModel.showInput = false
         this.inputModel.inputRows = this.inputModel.inputValue.length / 6
       }
+    },
+    mounted: function () {
+      if (this.position) {
+      }
+      // 点击事件
+      $('#' + this.outerSvgId).click(e => {
+        this.$emit('clickSvg') // 触发事件
+      })
     }
   }
 </script>

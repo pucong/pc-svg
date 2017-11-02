@@ -10,6 +10,7 @@
       <el-main style="padding: 0;">
         <pcMain></pcMain>
       </el-main>
+      <!--点击出现的图片-->
       <pcSvg type="parallelogram" inner-color="rgba(53, 109, 222, 0.3)"></pcSvg>
     </el-container>
     <el-footer style="height: 5%;background-color: #545c64">

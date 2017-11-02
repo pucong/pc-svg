@@ -11,8 +11,8 @@
       <pcSvg type="lTriangle" inner-color="rgba(53, 109, 222, 0.3)"></pcSvg>
       <pcSvg type="rTriangle" inner-color="rgba(53, 109, 222, 0.3)"></pcSvg>
       <pcSvg type="diamond"   inner-color="rgba(53, 109, 222, 0.3)"></pcSvg>
-      <pcSvg type="trapezium"   inner-color="rgba(53, 109, 222, 0.3)"></pcSvg>
-      <pcSvg type="parallelogram"   inner-color="rgba(53, 109, 222, 0.3)"></pcSvg>
+      <pcSvg type="trapezium" inner-color="rgba(53, 109, 222, 0.3)"></pcSvg>
+      <pcSvg type="parallelogram" inner-color="rgba(53, 109, 222, 0.3)"></pcSvg>
       <br/>
       <br/>
     </el-collapse-item>

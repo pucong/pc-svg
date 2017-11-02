@@ -39,9 +39,9 @@
         type: String,
         default: 'asdasd12'
       },
-      absolute: { // 位置模式 false为在展示栏 true为在拖动栏
-        type: Boolean,
-        default: false
+      position: { // 位置模式 relative为在展示栏 absolute为在拖动栏、点击出现图标
+        type: String,
+        default: 'relative'
       },
       shwFootFont: { // 是否显示脚部文字
         type: Boolean,
@@ -55,7 +55,7 @@
           height: this.shwFootFont ? this.pcHeight + 60 + 'px' : this.pcHeight + 10 + 'px',
           float: 'left',
           'margin-left': '2px',
-          position: this.absolute ? 'absolute' : 'relative',
+          position: this.position,
           top: this.top + 'px',
           left: this.left + 'px',
           'z-index': this.zIndex,
