@@ -6,7 +6,7 @@
 </template>
 <script>
   export default {
-    name: 'parallelogram ',
+    name: 'parallelogram',
     props: {
       pcWidth: { // 宽度
         type: Number,

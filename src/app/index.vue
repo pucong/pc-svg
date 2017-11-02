@@ -10,16 +10,19 @@
       <el-main style="padding: 0;">
         <pcMain></pcMain>
       </el-main>
+      <pcSvg type="parallelogram" inner-color="rgba(53, 109, 222, 0.3)"></pcSvg>
     </el-container>
     <el-footer style="height: 5%;background-color: #545c64">
 
     </el-footer>
+
   </el-container>
 </template>
 <script>
   import pcleft from '@/components/left'
   import pcMain from '@/components/main'
   import pcHeader from '@/components/header'
+  import pcSvg from '@/components/common/pc-svg'
 
 export default {
     name: 'index',
@@ -31,6 +34,7 @@ export default {
     components: {
       pcMain,
       pcleft,
+      pcSvg,
       pcHeader
     }
 }
