@@ -8,6 +8,7 @@
     <lTriangle  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='lTriangle'"></lTriangle>
     <rTriangle  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='rTriangle'"></rTriangle>
     <pcDiamond  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='diamond'"></pcDiamond>
+    <pcTrapezium  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='trapezium'"></pcTrapezium>
     <!--这是中间的字-->
     <inner-font :pc-height='pcHeight' :shw-inner-font="shwInnerFont" :cardId='cardId' :input-font="inputFont" :pc-width='pcWidth' :absolute='absolute'></inner-font>
     <!--这是下面的字-->
@@ -24,6 +25,7 @@
   import lTriangle from '@/components/svg/lTriangle'
   import rTriangle from '@/components/svg/rTriangle'
   import pcDiamond from '@/components/svg/diamond'
+  import pcTrapezium from '@/components/svg/trapezium'
 
   export default {
     name: 'inner-svg',
@@ -86,6 +88,7 @@
       lTriangle,
       rTriangle,
       pcDiamond,
+      pcTrapezium,
       footerFont
     },
     data () {

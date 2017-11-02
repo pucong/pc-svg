@@ -7,6 +7,7 @@
     <pcSvg type="lTriangle" inner-color="rgba(53, 109, 222, 0.3)" :left="400" :top="150" :pc-width="100" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" absolute></pcSvg>
     <pcSvg type="rTriangle" inner-color="rgba(53, 109, 222, 0.3)" :left="400" :top="150" :pc-width="100" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" absolute></pcSvg>
     <pcSvg type="diamond"   inner-color="rgba(53, 109, 222, 0.3)" :left="200" :top="150" :pc-width="100" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" absolute></pcSvg>
+    <pcSvg type="trapezium"   inner-color="rgba(53, 109, 222, 0.3)" :left="200" :top="150" :pc-width="100" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" absolute></pcSvg>
   </div>
 </template>
 <script>

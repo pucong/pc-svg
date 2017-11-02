@@ -67,12 +67,13 @@
         },
         spanStyleObject: { // 内容span样式
           display: 'block',
-          width: this.pcWidth + 'px',
-          height: this.pcHeight + 'px',
+//          width: this.pcWidth + 'px',
+//          height: this.pcHeight + 'px',
           'white-space': 'pre-wrap',
           'word-wrap': 'break-word ',
-          'overflow': 'hidden',
-          'word-break': 'normal'
+//          'overflow': 'hidden',
+          'word-break': 'normal',
+          width: this.pcWidth - 5 + 'px'
         },
         fontSize: 10, // 所有字体大小
         inputModel: { // 输入框属性
