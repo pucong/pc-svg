@@ -1,4 +1,4 @@
-<!--这是梯形-->
+<!--这是平行四边形-->
 <template>
     <div v-bind:style='innerStyleObject'>
 
@@ -6,7 +6,7 @@
 </template>
 <script>
   export default {
-    name: 'trapezium',
+    name: 'parallelogram ',
     props: {
       pcWidth: { // 宽度
         type: Number,
@@ -25,11 +25,13 @@
       return {
         innerStyleObject: { // 内部样式
           position: 'absolute',
-          width: this.pcWidth + 'px',
-          height: '0',
-          'border-bottom': this.pcWidth + 'px solid ' + this.innerColor,
-          'border-left': this.pcHeight / 2 + 'px solid transparent',
-          'border-right': this.pcHeight / 2 + 'px solid transparent'
+          left: this.pcWidth / 5 + 'px',
+          width: this.pcWidth * 2 / 3 + 'px',
+          height: this.pcHeight + 'px',
+          background: this.innerColor,
+          '-moz-transform': 'skew(30deg)',
+          '-o-transform': 'skew(30deg)',
+          'transform': 'skew(30deg)'
         }
       }
     }

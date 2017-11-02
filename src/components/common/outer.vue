@@ -54,6 +54,7 @@
           width: this.pcWidth + 10 + 'px',
           height: this.shwFootFont ? this.pcHeight + 60 + 'px' : this.pcHeight + 10 + 'px',
           float: 'left',
+          'margin-left': '2px',
           position: this.absolute ? 'absolute' : 'relative',
           top: this.top + 'px',
           left: this.left + 'px',
