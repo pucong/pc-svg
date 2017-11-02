@@ -78,6 +78,10 @@
         type: String,
         default: '2asd123'
       },
+      svgType: { // 图形的类型 1单击出现的图形 2左侧显示的图形 3右侧显示的图形
+        type: Number,
+        default: 3
+      },
       type: {
         type: String,
         default: 'rect'
@@ -128,12 +132,12 @@
       }
     },
     mounted: function () {
-      if (this.position) {
+      if (this.svgType === 2) {
+        // 点击事件
+        $('#' + this.outerSvgId).click(e => {
+          this.$emit('clickSvg', this.type) // 触发事件
+        })
       }
-      // 点击事件
-      $('#' + this.outerSvgId).click(e => {
-        this.$emit('clickSvg') // 触发事件
-      })
     }
   }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="pcMain">
+  <div>
     <pcSvg type="circle"    inner-color="rgba(53, 109, 222, 0.3)" :left="400" :top="150" :pc-width="100" :pc-height="100" input-font="pcSvg"></pcSvg>
     <pcSvg type="rect"      inner-color="rgba(53, 109, 222, 0.3)" :left="400" :top="150" :pc-width="200" :pc-height="200" footer-font="pcSvg" input-font="pcSvg" position="absolute"></pcSvg>
     <pcSvg type="triangle"  inner-color="rgba(53, 109, 222, 0.3)" :left="400" :top="150" :pc-width="100" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" position="absolute"></pcSvg>

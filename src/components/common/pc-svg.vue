@@ -11,6 +11,7 @@
                  :footer-font='footerFont'
                  :input-font='inputFont'
                  :pc-height='pcHeight'
+                 :svg-type='svgType'
                  :shw-foot-font='shwFootFont'
                  :shw-inner-font='shwInnerFont'
                   @clickSvg="clickSvg"
@@ -69,7 +70,11 @@
         type: Boolean,
         default: true
       },
-      type: { // 图形样式 circle 圆，rect 矩形，star 星形，triangle等腰三角形
+      svgType: { // 图形的类型 1单击出现的图形 2左侧显示的图形 3右侧显示的图形
+        type: Number,
+        default: 3
+      },
+      type: { // 图形样式 circle 圆，rect 矩形，star 星形，triangle等腰三角形等
         type: String,
         default: 'rect'
       }
@@ -85,7 +90,7 @@
     },
     methods: {
       clickSvg: function () { // 点击图形事件
-        console.log('触发事件了' + this.type)
+        this.$emit('clickSvg', this.type) // 触发事件
       }
     }
   }
