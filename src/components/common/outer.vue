@@ -88,6 +88,15 @@
         this.cardStyleObject.left = opt.left + 'px'
       }
     },
+    computed: {
+      // 计算属性的 getter
+      getTop: function () {
+        return this.top
+      },
+      getLeft: function () {
+        return this.left
+      }
+    },
     mounted: function () {
       var _this = this
       var $this = $('#' + this.cardId)

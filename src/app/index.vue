@@ -47,14 +47,15 @@
     },
     methods: {
       clickSvg: function (svgType) { // 点击图形事件，产生一个图形
+        const _this = this
         this.mouseOption.showClickSvg = true
         this.mouseOption.showClickSvgType = svgType
         $('.pcScgMainContainer').mousemove(e => {
           if (this.mouseOption.showClickSvg) {
-            var xx = e.originalEvent.x || e.originalEvent.layerX || 0
-            var yy = e.originalEvent.y || e.originalEvent.layerY || 0
-            this.mouseOption.xx = xx
-            this.mouseOption.yy = yy
+            const xx = e.originalEvent.x || e.originalEvent.layerX || 0
+            const yy = e.originalEvent.y || e.originalEvent.layerY || 0
+            _this.mouseOption.xx = xx
+            _this.mouseOption.yy = yy
           }
         })
       }
