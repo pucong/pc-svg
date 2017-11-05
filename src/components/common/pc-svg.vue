@@ -13,7 +13,6 @@
               :input-font='inputFont'
               :pc-height='pcHeight'
               :svg-type='svgType'
-              :svg-list='svgList'
               :shw-foot-font='shwFootFont'
               :shw-inner-font='shwInnerFont'
                @clickSvg="clickSvg"
@@ -79,12 +78,6 @@
       showClickSvg: { // 是否显示点击出现的图形
         type: Boolean,
         default: false
-      },
-      svgList: { // 是否显示点击出现的图形
-        type: Object,
-        default: function () {
-          return { }
-        }
       },
       pcScgMainContainerOpt: { // 显示栏的相对位置
         type: Object,

@@ -9,6 +9,18 @@
     <pcSvg type="diamond"   inner-color="rgba(53, 109, 222, 0.3)" :left="200" :top="150" :pc-width="100" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" position="absolute"></pcSvg>
     <pcSvg type="trapezium" inner-color="rgba(53, 109, 222, 0.3)" :left="200" :top="150" :pc-width="100" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" position="absolute"></pcSvg>
     <pcSvg type="parallelogram" inner-color="rgba(53, 109, 222, 0.3)" :left="200" :top="250" :pc-width="160" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" position="absolute"></pcSvg>
+
+    <pcSvg v-for="(svg, index) in svgList" :key="svg.cardId"
+           type="svg.type"
+           inner-color="svg.innerColor"
+           :left="svg.left"
+           :top="svg.top"
+           :pc-width="svg.pcWidth"
+           :pc-height="svg.pcHeight"
+           footer-font="svg.footerFont"
+           input-font="svg.inputFont"
+           position="svg.absolute">
+    </pcSvg>
   </div>
 </template>
 <script>
@@ -16,6 +28,14 @@
 
   export default {
     name: 'main',
+    props: {
+      svgList: { // 是否显示点击出现的图形
+        type: Array,
+        default: function () {
+          return []
+        }
+      }
+    },
     data () {
       return {
 
