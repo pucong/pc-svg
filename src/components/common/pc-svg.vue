@@ -1,20 +1,22 @@
 <template>
-  <outer :left='left' :top='top' :pc-width='pcWidth' :pc-height='pcHeight' :card-id='cardId'
-           :position='position' :z-index="zIndex" :inner-color='innerColor' :shw-foot-font='shwFootFont'>
+  <outer :left='left' :top='top' :pc-width='pcWidth' :pc-height='pcHeight' :card-id='cardId' :svg-type='svgType' :show-click-svg='showClickSvg'
+           :position='position' :z-index="zIndex" :inner-color='innerColor' :shw-foot-font='shwFootFont'
+         @showSvgClick="showSvgClick" :pc-scg-main-container-opt="pcScgMainContainerOpt" ref="outer">
     <innerSvg :card-id='cardId'
-                 :inner-color='innerColor'
-                 :left='left'
-                 :top='top'
-                 :type='type'
-                 :position='position'
-                 :pc-width='pcWidth'
-                 :footer-font='footerFont'
-                 :input-font='inputFont'
-                 :pc-height='pcHeight'
-                 :svg-type='svgType'
-                 :shw-foot-font='shwFootFont'
-                 :shw-inner-font='shwInnerFont'
-                  @clickSvg="clickSvg"
+              :inner-color='innerColor'
+              :left='left'
+              :top='top'
+              :type='type'
+              :position='position'
+              :pc-width='pcWidth'
+              :footer-font='footerFont'
+              :input-font='inputFont'
+              :pc-height='pcHeight'
+              :svg-type='svgType'
+              :svg-list='svgList'
+              :shw-foot-font='shwFootFont'
+              :shw-inner-font='shwInnerFont'
+               @clickSvg="clickSvg"
     ></innerSvg>
   </outer>
 </template>
@@ -74,6 +76,22 @@
         type: Number,
         default: 3
       },
+      showClickSvg: { // 是否显示点击出现的图形
+        type: Boolean,
+        default: false
+      },
+      svgList: { // 是否显示点击出现的图形
+        type: Object,
+        default: function () {
+          return { }
+        }
+      },
+      pcScgMainContainerOpt: { // 显示栏的相对位置
+        type: Object,
+        default: function () {
+          return {top: 1, left: 1}
+        }
+      },
       type: { // 图形样式 circle 圆，rect 矩形，star 星形，triangle等腰三角形等
         type: String,
         default: 'rect'
@@ -90,7 +108,18 @@
     },
     methods: {
       clickSvg: function () { // 点击图形事件
-        this.$emit('clickSvg', this.type) // 触发事件
+        if (this.svgType === 2) {
+//          this.svgClickStatus = true
+          this.$emit('clickSvg', this.type) // 触发事件
+        }
+      },
+      showSvgClick: function () {
+        if (this.svgType === 1) {
+          this.$emit('showSvgClick', this.type) // 触发事件
+        }
+      },
+      getPosition: function () {
+        return this.$refs.outer.getPosition()
       }
     }
   }

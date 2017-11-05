@@ -43,6 +43,20 @@
         type: String,
         default: 'relative'
       },
+      svgType: { // 图形的类型 1单击出现的图形 2左侧显示的图形 3右侧显示的图形
+        type: Number,
+        default: 3
+      },
+      showClickSvg: { // 是否显示点击出现的图形
+        type: Boolean,
+        default: false
+      },
+      pcScgMainContainerOpt: { // 显示栏的相对位置
+        type: Object,
+        default: function () {
+          return {top: 1, left: 1}
+        }
+      },
       shwFootFont: { // 是否显示脚部文字
         type: Boolean,
         default: false
@@ -88,15 +102,6 @@
         this.cardStyleObject.left = opt.left + 'px'
       }
     },
-    computed: {
-      // 计算属性的 getter
-      getTop: function () {
-        return this.top
-      },
-      getLeft: function () {
-        return this.left
-      }
-    },
     mounted: function () {
       var _this = this
       var $this = $('#' + this.cardId)
@@ -106,6 +111,10 @@
         model._move = true
         model._x = e.pageX - parseInt(_this.getPosition().left)
         model._y = e.pageY - parseInt(_this.getPosition().top)
+        // 如果是点击出现的图形，则使其消失
+        if (_this.showClickSvg) {
+          _this.$emit('showSvgClick', this.type) // 触发点击图形消失事件
+        }
       })
       $(document).mousemove(function (e) {
         if (model._move) {
@@ -122,6 +131,24 @@
         }
       }).mouseup(function () {
         model._move = false
+      })
+      // 实现点击图形，跟随鼠标
+      $('.pcScgMainContainer').mousemove(e => {
+        if (_this.showClickSvg) {
+          if (_this.svgType === 1) {
+            var xx = e.originalEvent.x || e.originalEvent.layerX || 0
+            var yy = e.originalEvent.y || e.originalEvent.layerY || 0
+            xx = parseInt(xx) - parseInt(_this.pcScgMainContainerOpt.left) - parseInt(_this.pcWidth) / 2
+            yy = parseInt(yy) - parseInt(_this.pcScgMainContainerOpt.top) - parseInt(_this.pcHeight) / 2
+            if (xx < 0) {
+              xx = 0
+            }
+            if (yy < 0) {
+              yy = 0
+            }
+            _this.setPosition({top: yy, left: xx})
+          }
+        }
       })
     }
   }

@@ -136,7 +136,7 @@
       if (this.svgType === 2) {
         // 点击事件
         $('#' + this.outerSvgId).click(e => {
-          _this.$emit('clickSvg', this.type) // 触发事件
+          _this.$emit('clickSvg') // 触发事件
         })
       }
     }
