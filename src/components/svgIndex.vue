@@ -39,15 +39,6 @@
         pcScgMainContainerOpt: { // 显示栏相对top和left
           top: 1,
           left: 1
-        },
-        svg: {  // 图形参数默认值
-          type: 'circle',
-          innerColor: 'rgba(53, 109, 222, 0.3)',
-          left: 100,
-          top: 100,
-          pcWidth: 100,
-          pcHeight: 100,
-          inputFont: 'pcSvg'
         }
       }
     },

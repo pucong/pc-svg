@@ -94,7 +94,7 @@
       // 实现双击显示输入框
       if (this.inputFont !== '') {
         $this.dblclick(function () {
-          if (_this.position === 'relative') {
+          if (_this.position === 'absolute') {
             if (!_this.pcHeight < 50) {
               _this.inputModel.showInput = true
             }

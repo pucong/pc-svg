@@ -22,7 +22,6 @@
 <script>
   import innerSvg from '@/components/common/innerSvg'
   import outer from '@/components/common/outer'
-  import util from '@/util.js'
 
   export default {
     name: 'pc-circle',
@@ -85,6 +84,10 @@
           return {top: 1, left: 1}
         }
       },
+      cardId: {
+        type: String,
+        default: '123456'
+      },
       type: { // 图形样式 circle 圆，rect 矩形，star 星形，triangle等腰三角形等
         type: String,
         default: 'rect'
@@ -96,7 +99,7 @@
     },
     data: function () {
       return {
-        cardId: util.getUuid('circle')
+
       }
     },
     methods: {
