@@ -24,7 +24,8 @@
           pcWidth: 100,
           pcHeight: 100,
           footerFont: 'pcSvg',
-          inputFont: 'pcSvg'
+          inputFont: 'pcSvg',
+          position: 'absolute'
         }, {
           type: 'rect',
           innerColor: 'rgba(53, 109, 222, 0.3)',
@@ -33,7 +34,8 @@
           pcWidth: 100,
           pcHeight: 100,
           footerFont: 'pcSvg',
-          inputFont: 'pcSvg'
+          inputFont: 'pcSvg',
+          position: 'absolute'
         }, {
           type: 'triangle',
           innerColor: 'rgba(53, 109, 222, 0.3)',
@@ -42,6 +44,7 @@
           pcWidth: 100,
           pcHeight: 100,
           footerFont: 'pcSvg',
+          position: 'absolute',
           inputFont: 'pcSvg'
         }, {
           type: 'lTriangle',
@@ -51,6 +54,7 @@
           pcWidth: 100,
           pcHeight: 100,
           footerFont: 'pcSvg',
+          position: 'absolute',
           inputFont: 'pcSvg'
         }, {
           type: 'rTriangle',
@@ -60,6 +64,7 @@
           pcWidth: 100,
           pcHeight: 100,
           footerFont: 'pcSvg',
+          position: 'absolute',
           inputFont: 'pcSvg'
         }, {
           type: 'diamond',
@@ -69,6 +74,7 @@
           pcWidth: 100,
           pcHeight: 100,
           footerFont: 'pcSvg',
+          position: 'absolute',
           inputFont: 'pcSvg'
         }, {
           type: 'trapezium',
@@ -78,15 +84,17 @@
           pcWidth: 100,
           pcHeight: 100,
           footerFont: 'pcSvg',
+          position: 'absolute',
           inputFont: 'pcSvg'
         }, {
           type: 'parallelogram',
           innerColor: 'rgba(53, 109, 222, 0.3)',
           left: 100,
           top: 100,
-          pcWidth: 100,
+          pcWidth: 200,
           pcHeight: 100,
           footerFont: 'pcSvg',
+          position: 'absolute',
           inputFont: 'pcSvg'
         }],
         svg: {  // 图形参数默认值

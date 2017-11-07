@@ -4,7 +4,7 @@
         <pcLeft @clickSvg="clickSvg"></pcLeft>
       </el-aside>
       <el-main style="padding: 0;">
-        <pcMain class="pcMain" :svg-list="svgList"></pcMain>
+        <pcMain class="pcMain" :svg-list="pcSvgList"></pcMain>
       </el-main>
       <!--点击左侧出现的图形-->
       <pcSvg :type="mouseOption.showClickSvgType" ref="pcSvgOut" v-if="mouseOption.showClickSvg" :svg-type="1"
@@ -18,10 +18,11 @@
   import pcLeft from '@/components/left'
   import pcMain from '@/components/main'
   import pcSvg from '@/components/common/pc-svg'
+  import util from '@/util.js'
   import $ from 'jquery'
 
   export default {
-    name: 'index',
+    name: 'pcSvgIndex',
     props: {
       svgList: { // 是否显示点击出现的图形
         type: Array,
@@ -39,7 +40,8 @@
         pcScgMainContainerOpt: { // 显示栏相对top和left
           top: 1,
           left: 1
-        }
+        },
+        pcSvgList: []
       }
     },
     components: {
@@ -66,6 +68,11 @@
       const left = $('.pcScgMainContainer').position().left
       this.pcScgMainContainerOpt.top = top
       this.pcScgMainContainerOpt.left = left
+      var svgList = this.svgList
+      for (var i in svgList) {
+        svgList[i].cardId = util.getUuid('card')
+        this.pcSvgList.push(svgList[i])
+      }
     }
   }
 </script>
