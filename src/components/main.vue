@@ -23,10 +23,12 @@
            :input-font="svg.inputFont"
            :position="svg.position">
     </pcSvg>
+    <arrow></arrow>
   </div>
 </template>
 <script>
   import pcSvg from '@/components/common/pc-svg'
+  import arrow from '@/components/svg/arrow'
 
   export default {
     name: 'main',
@@ -44,6 +46,7 @@
       }
     },
     components: {
+      arrow,
       pcSvg
     }
   }
