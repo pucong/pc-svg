@@ -41,7 +41,19 @@
           top: 1,
           left: 1
         },
-        pcSvgList: []
+        pcSvgList: [],
+        svg: {  // 图形参数默认值
+          type: 'circle',
+          innerColor: 'rgba(53, 109, 222, 0.3)',
+          left: 100,
+          top: 100,
+          pcWidth: 100,
+          pcHeight: 100,
+          position: 'absolute',
+          shwFootFont: false,
+          footerFont: 'pcSvg',
+          inputFont: 'pcSvg'
+        }
       }
     },
     components: {
@@ -54,12 +66,21 @@
         this.mouseOption.showClickSvg = true
         this.mouseOption.showClickSvgType = svgType
       },
-      showSvgClick: function () {
+      showSvgClick: function (type) {
         this.mouseOption.showClickSvg = false
         var positon = this.$refs.pcSvgOut.getPosition()
         const xx = parseInt(positon.left)
         const yy = parseInt(positon.top)
-        console.log(xx, yy)
+        const top = $('.pcMain').position().top
+        const left = $('.pcMain').position().left
+        var svg = {
+          type: type,
+          cardId: util.getUuid('card'),
+          left: xx - parseInt(left),
+          top: yy - parseInt(top)
+        }
+        svg = $.extend({}, this.svg, svg)
+        this.pcSvgList.push(svg)
       }
     },
     mounted: function () {
@@ -70,8 +91,11 @@
       this.pcScgMainContainerOpt.left = left
       var svgList = this.svgList
       for (var i in svgList) {
-        svgList[i].cardId = util.getUuid('card')
-        this.pcSvgList.push(svgList[i])
+        svgList[i].cardId = util.getUuid('card') // 赋值card id
+        // 合并默认值
+        var svg = svgList[i]
+        svg = $.extend({}, this.svg, svg)
+        this.pcSvgList.push(svg)
       }
     }
   }

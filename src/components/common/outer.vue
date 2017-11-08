@@ -11,7 +11,7 @@
   export default {
     name: 'pc-outer',
     props: {
-      zIndex: { // x坐标
+      zIndex: { // 浮现程度
         type: Number,
         default: 50
       },
@@ -152,9 +152,9 @@
       })
       // 实现hover
       $this.hover(function () {
-        $this.addClass('animated jello')
+        $this.addClass('animated tada')
       }, function () {
-        $this.removeClass('animated jello')
+        $this.removeClass('animated tada')
       })
     }
   }

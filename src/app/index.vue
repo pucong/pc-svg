@@ -16,97 +16,81 @@
     name: 'index',
     data () {
       return {
-        svgList: [{ // 所有显示的图形
-          type: 'circle',
-          innerColor: 'rgba(53, 109, 222, 0.3)',
-          left: 100,
-          top: 100,
-          pcWidth: 100,
-          pcHeight: 100,
-          footerFont: 'pcSvg',
-          inputFont: 'pcSvg1',
-          shwFootFont: true,
-          position: 'absolute'
-        }, {
-          type: 'rect',
-          innerColor: 'rgba(53, 109, 222, 0.3)',
-          left: 100,
-          top: 100,
-          pcWidth: 100,
-          pcHeight: 100,
-          footerFont: 'pcSvg',
-          inputFont: 'pcSvg',
-          position: 'absolute'
-        }, {
-          type: 'triangle',
-          innerColor: 'rgba(53, 109, 222, 0.3)',
-          left: 100,
-          top: 100,
-          pcWidth: 100,
-          pcHeight: 100,
-          footerFont: 'pcSvg',
-          position: 'absolute',
-          inputFont: 'pcSvg'
-        }, {
-          type: 'lTriangle',
-          innerColor: 'rgba(53, 109, 222, 0.3)',
-          left: 100,
-          top: 100,
-          pcWidth: 100,
-          pcHeight: 100,
-          footerFont: 'pcSvg',
-          position: 'absolute',
-          inputFont: 'pcSvg'
-        }, {
-          type: 'rTriangle',
-          innerColor: 'rgba(53, 109, 222, 0.3)',
-          left: 100,
-          top: 100,
-          pcWidth: 100,
-          pcHeight: 100,
-          footerFont: 'pcSvg',
-          position: 'absolute',
-          inputFont: 'pcSvg'
-        }, {
-          type: 'diamond',
-          innerColor: 'rgba(53, 109, 222, 0.3)',
-          left: 100,
-          top: 100,
-          pcWidth: 100,
-          pcHeight: 100,
-          footerFont: 'pcSvg',
-          position: 'absolute',
-          inputFont: 'pcSvg'
-        }, {
-          type: 'trapezium',
-          innerColor: 'rgba(53, 109, 222, 0.3)',
-          left: 100,
-          top: 100,
-          pcWidth: 100,
-          pcHeight: 100,
-          footerFont: 'pcSvg',
-          position: 'absolute',
-          inputFont: 'pcSvg'
-        }, {
-          type: 'parallelogram',
-          innerColor: 'rgba(53, 109, 222, 0.3)',
-          left: 100,
-          top: 100,
-          pcWidth: 200,
-          pcHeight: 100,
-          footerFont: 'pcSvg',
-          position: 'absolute',
-          inputFont: 'pcSvg'
-        }],
-        svg: {  // 图形参数默认值
-          type: 'circle',
-          innerColor: 'rgba(53, 109, 222, 0.3)',
-          left: 100,
-          top: 100,
-          pcWidth: 100,
-          pcHeight: 100,
-          inputFont: 'pcSvg'
-        }
+        svgList: []
+//        svgList: [{ // 所有显示的图形
+//          type: 'circle',
+//          innerColor: 'rgba(53, 109, 222, 0.3)',
+//          left: 100,
+//          top: 100,
+//          pcWidth: 100,
+//          pcHeight: 100,
+//          footerFont: 'pcSvg',
+//          inputFont: 'pcSvg1',
+//          shwFootFont: true
+//        }, {
+//          type: 'rect',
+//          innerColor: 'rgba(53, 109, 222, 0.3)',
+//          left: 100,
+//          top: 100,
+//          pcWidth: 100,
+//          pcHeight: 100,
+//          footerFont: 'pcSvg',
+//          inputFont: 'pcSvg'
+//        }, {
+//          type: 'triangle',
+//          innerColor: 'rgba(53, 109, 222, 0.3)',
+//          left: 100,
+//          top: 100,
+//          pcWidth: 100,
+//          pcHeight: 100,
+//          footerFont: 'pcSvg',
+//          inputFont: 'pcSvg'
+//        }, {
+//          type: 'lTriangle',
+//          innerColor: 'rgba(53, 109, 222, 0.3)',
+//          left: 100,
+//          top: 100,
+//          pcWidth: 100,
+//          pcHeight: 100,
+//          footerFont: 'pcSvg',
+//          inputFont: 'pcSvg'
+//        }, {
+//          type: 'rTriangle',
+//          innerColor: 'rgba(53, 109, 222, 0.3)',
+//          left: 100,
+//          top: 100,
+//          pcWidth: 100,
+//          pcHeight: 100,
+//          footerFont: 'pcSvg',
+//          inputFont: 'pcSvg'
+//        }, {
+//          type: 'diamond',
+//          innerColor: 'rgba(53, 109, 222, 0.3)',
+//          left: 100,
+//          top: 100,
+//          pcWidth: 100,
+//          pcHeight: 100,
+//          footerFont: 'pcSvg',
+//          inputFont: 'pcSvg'
+//        }, {
+//          type: 'trapezium',
+//          innerColor: 'rgba(53, 109, 222, 0.3)',
+//          left: 100,
+//          top: 100,
+//          pcWidth: 100,
+//          pcHeight: 100,
+//          footerFont: 'pcSvg',
+//          inputFont: 'pcSvg'
+//        }, {
+//          type: 'parallelogram',
+//          innerColor: 'rgba(53, 109, 222, 0.3)',
+//          left: 100,
+//          top: 100,
+//          pcWidth: 200,
+//          pcHeight: 100,
+//          footerFont: 'pcSvg',
+//          inputFont: 'pcSvg'
+//        }]
       }
     },
     components: {

@@ -103,13 +103,13 @@
       }
     },
     methods: {
-      clickSvg: function () { // 点击图形事件
+      clickSvg: function () { // 点击左侧图形事件
         if (this.svgType === 2) {
 //          this.svgClickStatus = true
           this.$emit('clickSvg', this.type) // 触发事件
         }
       },
-      showSvgClick: function () {
+      showSvgClick: function () { // 触发图形消失事件
         if (this.svgType === 1) {
           this.$emit('showSvgClick', this.type) // 触发事件
         }
