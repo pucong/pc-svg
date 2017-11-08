@@ -25,6 +25,7 @@
           pcHeight: 100,
           footerFont: 'pcSvg',
           inputFont: 'pcSvg',
+          shwFootFont: true,
           position: 'absolute'
         }, {
           type: 'rect',

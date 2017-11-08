@@ -18,6 +18,7 @@
            :top="svg.top"
            :pc-width="svg.pcWidth"
            :pc-height="svg.pcHeight"
+           :shw-foot-font="svg.shwFootFont"
            :footer-font="svg.footerFont"
            :input-font="svg.inputFont"
            :position="svg.position">
