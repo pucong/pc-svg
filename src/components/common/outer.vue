@@ -1,5 +1,5 @@
 <template>
-  <el-card :body-style="cardBodyStyle" v-bind:style="cardStyleObject" :id="cardId">
+  <el-card :body-style="cardBodyStyle" v-bind:style="cardStyleObject" :id="cardId" class="svgHover">
     <div align="center" v-bind:style="centerStyleObject">
       <slot></slot>
     </div>
@@ -149,6 +149,12 @@
             _this.setPosition({top: yy, left: xx})
           }
         }
+      })
+      // 实现hover
+      $this.hover(function () {
+        $this.addClass('animated jello')
+      }, function () {
+        $this.removeClass('animated jello')
       })
     }
   }

@@ -37,9 +37,6 @@ body{
 .el-collapse-item__arrow {
   margin-right: 19px;
 }
-.svgHover:hover{
-  border: 1px solid black;
-}
 
 /*禁止选中文本*/
 div{

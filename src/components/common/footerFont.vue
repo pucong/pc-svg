@@ -64,7 +64,7 @@
         footerId: util.getUuid('footer'),
         inputModel: {
           inputRows: 1,
-          inputValue: this.position === 'relative' ? this.font : '',
+          inputValue: this.shwFootFont ? this.font : '',
           showInput: false
         }
       }
@@ -83,7 +83,7 @@
       // 实现双击显示输入框
       if (this.font !== '') {
         $this.click(function () {
-          if (_this.position === 'relative') {
+          if (_this.shwFootFont) {
             _this.inputModel.showInput = true
           }
         })

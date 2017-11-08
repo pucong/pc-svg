@@ -24,7 +24,7 @@
           pcWidth: 100,
           pcHeight: 100,
           footerFont: 'pcSvg',
-          inputFont: 'pcSvg',
+          inputFont: 'pcSvg1',
           shwFootFont: true,
           position: 'absolute'
         }, {
@@ -117,5 +117,6 @@
   }
 </script>
 <style lang="css">
-  @import '../assets/index.css'
+  @import '../assets/index.css';
+  @import '../assets/animateCss/animate.css';
 </style>
