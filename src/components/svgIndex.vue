@@ -10,6 +10,7 @@
       <pcSvg :type="mouseOption.showClickSvgType" ref="pcSvgOut" v-if="mouseOption.showClickSvg" :svg-type="1"
              :pc-scg-main-container-opt="pcScgMainContainerOpt" :show-click-svg='mouseOption.showClickSvg'
              position="absolute" inner-color="rgba(53, 109, 222, 0.3)" :pc-width="100" :pc-height="100"
+             :top="clickSvgPosition.yy" :left="clickSvgPosition.xx"
              @showSvgClick="showSvgClick"
       ></pcSvg>
     </el-container>
@@ -53,6 +54,10 @@
           shwFootFont: false,
           footerFont: 'pcSvg',
           inputFont: 'pcSvg'
+        },
+        clickSvgPosition: {
+          xx: 1,
+          yy: 1
         }
       }
     },
@@ -65,12 +70,17 @@
       clickSvg: function (svgType) { // 点击图形事件，产生一个图形
         this.mouseOption.showClickSvg = true
         this.mouseOption.showClickSvgType = svgType
+        // 获取鼠标当前位置
+        const point = util.getMousePosition()
+        // 设置初始位置
+        this.clickSvgPosition.xx = point.xx
+        this.clickSvgPosition.yy = point.yy
       },
       showSvgClick: function (type) {
         this.mouseOption.showClickSvg = false
-        var positon = this.$refs.pcSvgOut.getPosition()
-        const xx = parseInt(positon.left)
-        const yy = parseInt(positon.top)
+        var position = this.$refs.pcSvgOut.getPosition()
+        const xx = parseInt(position.left)
+        const yy = parseInt(position.top)
         const top = $('.pcMain').position().top
         const left = $('.pcMain').position().left
         var svg = {

@@ -3,6 +3,10 @@ import $ from 'jquery'
 // var types = require('@/store/types')
 
 export default {
+  point: {
+    xx: 1,
+    yy: 1
+  },
   // 生成唯一id
   getUuid: function (str) {
     return str + this.guid()
@@ -91,5 +95,12 @@ export default {
     let one = Math.pow(three, 2) / 2
     one = Math.sqrt(one)
     return Math.ceil(one)
+  },
+  getMousePosition: function () {
+    return this.point
+  },
+  setMousePosition: function (opt) {
+    this.point.xx = opt.xx
+    this.point.yy = opt.yy
   }
 }

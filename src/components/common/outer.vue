@@ -7,6 +7,7 @@
 </template>
 <script>
   import $ from 'jquery'
+  import util from '@/util.js'
 
   export default {
     name: 'pc-outer',
@@ -117,6 +118,7 @@
         }
       })
       $(document).mousemove(function (e) {
+        util.setMousePosition({xx: e.pageX, yy: e.pageY})
         if (model._move) {
           // 移动时根据鼠标位置计算控件左上角的绝对位置
           var x = e.pageX - model._x
