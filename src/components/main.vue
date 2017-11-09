@@ -1,14 +1,7 @@
 <template>
-  <div>
-    <!--<pcSvg type="circle"    inner-color="rgba(53, 109, 222, 0.3)" :left="400" :top="150" :pc-width="100" :pc-height="100" input-font="pcSvg1" position="absolute"></pcSvg>-->
-    <!--<pcSvg type="rect"      inner-color="rgba(53, 109, 222, 0.3)" :left="400" :top="150" :pc-width="200" :pc-height="200" footer-font="pcSvg" input-font="pcSvg" position="absolute"></pcSvg>-->
-    <!--<pcSvg type="triangle"  inner-color="rgba(53, 109, 222, 0.3)" :left="400" :top="150" :pc-width="100" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" position="absolute"></pcSvg>-->
-    <!--<pcSvg type="dTriangle" inner-color="rgba(53, 109, 222, 0.3)" :left="400" :top="150" :pc-width="100" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" position="absolute"></pcSvg>-->
-    <!--<pcSvg type="lTriangle" inner-color="rgba(53, 109, 222, 0.3)" :left="400" :top="150" :pc-width="100" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" position="absolute"></pcSvg>-->
-    <!--<pcSvg type="rTriangle" inner-color="rgba(53, 109, 222, 0.3)" :left="400" :top="150" :pc-width="100" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" position="absolute"></pcSvg>-->
-    <!--<pcSvg type="diamond"   inner-color="rgba(53, 109, 222, 0.3)" :left="200" :top="150" :pc-width="100" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" position="absolute"></pcSvg>-->
-    <!--<pcSvg type="trapezium" inner-color="rgba(53, 109, 222, 0.3)" :left="200" :top="150" :pc-width="100" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" position="absolute"></pcSvg>-->
-    <!--<pcSvg type="arrow" position="absolute" card-id="123"></pcSvg>-->
+  <div v-bind:style="pcMainSvgClass" class="pcMainSvgClass">
+    <pcRelation type="arrow" :xx-one="100" :yy-one="100" :pc-width="500" :pc-height="500" :xx-two="300" :yy-two="300"
+                inner-color="rgba(53, 109, 222, 0.3)" :arrow-type="2" :card-id="1234123"></pcRelation>
 
     <pcSvg v-for="(svg, index) in svgList" :key="svg.cardId"
            :type="svg.type"
@@ -28,6 +21,7 @@
 </template>
 <script>
   import pcSvg from '@/components/common/pc-svg'
+  import pcRelation from '@/components/common/pc-relation'
 
   export default {
     name: 'main',
@@ -39,18 +33,52 @@
         }
       }
     },
-    data () {
+    data: function () {
       return {
-
+        pcMainSvgClass: {
+          transform: 'scale(1)'
+        }
       }
     },
     components: {
+      pcRelation,
       pcSvg
+    },
+    methods: {
+      addEvent: function (obj, xEvent, fn) {
+        debugger
+        if (obj.attachEvent) {
+          obj.attachEvent('on' + xEvent, fn)
+        } else {
+          obj.addEventListener(xEvent, fn, false)
+        }
+      },
+      onMouseWheel: function () {
+        const classObj = document.getElementsByClassName('pcMainSvgClass')
+        var ev = ev || window.event
+        var down = true // 定义一个标志，当滚轮向下滚时，执行一些操作
+        down = ev.wheelDelta ? ev.wheelDelta < 0 : ev.detail > 0
+        if (down) {
+          classObj.style.height = classObj.offsetHeight + 10 + 'px'
+        } else {
+          classObj.style.height = classObj.offsetHeight - 10 + 'px'
+        }
+        if (ev.preventDefault) { /* FF 和 Chrome */
+          ev.preventDefault() // 阻止默认事件
+        }
+        return false
+      }
+    },
+    mounted: function () {
+      debugger
+      const classObj = document.getElementsByClassName('pcMainSvgClass')
+      this.addEvent(classObj, 'mousewheel', this.onMouseWheel) //IE GOOGLE
+      this.addEvent(classObj, 'DOMMouseScroll', this.onMouseWheel) // FF
     }
   }
 </script>
 <style scoped>
-  .pcMain{
+  .pcMainSvgClass {
     position: relative;
     overflow: hidden;
     width: 100%;
