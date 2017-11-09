@@ -17,12 +17,13 @@
       <br/>
     </el-collapse-item>
     <el-collapse-item title="箭头" name="three" style="padding: 0px;position: relative;">
-      <pcSvg type="arrow" inner-color="rgba(53, 109, 222, 0.3)"  :svg-type="2" @clickSvg="clickSvg" :card-id="getUuid()"></pcSvg>
+      <pcRelation type="arrow" :xx-one="0" :yy-one="0" :xx-two="10" :yy-two="10" inner-color="rgba(53, 109, 222, 0.3)" :arrow-type="2" @clickSvg="clickSvg" :card-id="getUuid()"></pcRelation>
     </el-collapse-item>
   </el-collapse>
 </template>
 <script>
   import pcSvg from '@/components/common/pc-svg'
+  import pcRelation from '@/components/common/pc-relation'
   import util from '@/util.js'
 
   export default {
@@ -33,7 +34,8 @@
       }
     },
     components: {
-      pcSvg
+      pcSvg,
+      pcRelation
     },
     methods: {
       clickSvg: function (type) {

@@ -18,13 +18,14 @@
             stroke-width="2" :fill="polylineColor"/>
 
     <!--文字部分-->
-    <defs>
-      <path :id="pathId" :d="fontPath" fill="none" stroke="#333"></path>
-    </defs>
-    <text class="textCircle" fill="yellowgreen">
-      <textPath xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="'#' + pathId">{{ lineFont }}</textPath>
-    </text>
-
+    <div v-if="relationType == 3">
+      <defs>
+        <path :id="pathId" :d="fontPath" fill="none" stroke="#333"></path>
+      </defs>
+      <text class="textCircle" fill="yellowgreen">
+        <textPath xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="'#' + pathId">{{ lineFont }}</textPath>
+      </text>
+    </div>
   </svg>
 </template>
 <script>
@@ -60,6 +61,10 @@
       polylineColor: { // 头部颜色
         type: String,
         default: 'rgb(99,99,99)'
+      },
+      relationType: { // 属性 2 左侧图形
+        type: Number,
+        default: 2
       }
     },
     data () {
