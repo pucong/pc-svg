@@ -15,6 +15,7 @@
               :svg-type='svgType'
               :shw-foot-font='shwFootFont'
               :shw-inner-font='shwInnerFont'
+              :options='options'
                @clickSvg="clickSvg"
     ></innerSvg>
   </outer>
@@ -82,6 +83,12 @@
         type: Object,
         default: function () {
           return {top: 1, left: 1}
+        }
+      },
+      options: { // 其他参数
+        type: Object,
+        default: function () {
+          return {}
         }
       },
       cardId: {

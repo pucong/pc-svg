@@ -8,7 +8,7 @@
     <!--<pcSvg type="rTriangle" inner-color="rgba(53, 109, 222, 0.3)" :left="400" :top="150" :pc-width="100" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" position="absolute"></pcSvg>-->
     <!--<pcSvg type="diamond"   inner-color="rgba(53, 109, 222, 0.3)" :left="200" :top="150" :pc-width="100" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" position="absolute"></pcSvg>-->
     <!--<pcSvg type="trapezium" inner-color="rgba(53, 109, 222, 0.3)" :left="200" :top="150" :pc-width="100" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" position="absolute"></pcSvg>-->
-    <!--<pcSvg type="parallelogram" inner-color="rgba(53, 109, 222, 0.3)" :left="200" :top="250" :pc-width="160" :pc-height="100" footer-font="pcSvg" input-font="pcSvg" position="absolute"></pcSvg>-->
+    <!--<pcSvg type="arrow" position="absolute" card-id="123"></pcSvg>-->
 
     <pcSvg v-for="(svg, index) in svgList" :key="svg.cardId"
            :type="svg.type"
@@ -21,14 +21,13 @@
            :shw-foot-font="svg.shwFootFont"
            :footer-font="svg.footerFont"
            :input-font="svg.inputFont"
+           :options="svg.options"
            :position="svg.position">
     </pcSvg>
-    <arrow></arrow>
   </div>
 </template>
 <script>
   import pcSvg from '@/components/common/pc-svg'
-  import arrow from '@/components/svg/arrow'
 
   export default {
     name: 'main',
@@ -46,7 +45,6 @@
       }
     },
     components: {
-      arrow,
       pcSvg
     }
   }

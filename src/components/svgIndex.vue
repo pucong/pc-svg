@@ -53,7 +53,10 @@
           position: 'absolute',
           shwFootFont: false,
           footerFont: 'pcSvg',
-          inputFont: 'pcSvg'
+          inputFont: 'pcSvg',
+          options: { // 其他参数
+
+          }
         },
         clickSvgPosition: {
           xx: 1,
