@@ -10,7 +10,6 @@
     <pcDiamond  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='diamond'"></pcDiamond>
     <pcTrapezium  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='trapezium'"></pcTrapezium>
     <pcParallelogram  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='parallelogram'"></pcParallelogram>
-    <arrow :xx-one="options.xxOne" :yy-one="options.yyOne" :xx-two="options.xxTwo" :yy-two="options.yyTwo" :polyline-color="options.polylineColor" :line-font="inputFont" :line-color="innerColor" v-if="type=='arrow'"></arrow>
    <!--这是中间的字-->
     <inner-font :pc-height='pcHeight' :shw-inner-font="shwInnerFont" :cardId='cardId' :input-font="inputFont" :pc-width='pcWidth' :position='position'></inner-font>
     <!--这是下面的字-->
@@ -29,7 +28,6 @@
   import pcDiamond from '@/components/svg/diamond'
   import pcTrapezium from '@/components/svg/trapezium'
   import pcParallelogram from '@/components/svg/parallelogram'
-  import arrow from '@/components/svg/arrow'
   import $ from 'jquery'
   import util from '@/util.js'
 
@@ -106,7 +104,6 @@
       pcDiamond,
       pcTrapezium,
       pcParallelogram,
-      arrow,
       footerFont
     },
     data () {
