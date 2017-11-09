@@ -46,14 +46,16 @@
     },
     methods: {
       addEvent: function (obj, xEvent, fn) {
-        debugger
-        if (obj.attachEvent) {
-          obj.attachEvent('on' + xEvent, fn)
-        } else {
-          obj.addEventListener(xEvent, fn, false)
-        }
+//        if (obj.attachEvent) {
+//          obj.attachEvent('on' + xEvent, fn)
+//        } else {
+//          obj.addEventListener(xEvent, fn, false)
+//        }
+        window.addEventListener('scroll', fn)
+        console.log(fn)
       },
-      onMouseWheel: function () {
+      onMouseWheel: function (e) {
+        console.log(e)
         const classObj = document.getElementsByClassName('pcMainSvgClass')
         var ev = ev || window.event
         var down = true // 定义一个标志，当滚轮向下滚时，执行一些操作
@@ -70,9 +72,8 @@
       }
     },
     mounted: function () {
-      debugger
       const classObj = document.getElementsByClassName('pcMainSvgClass')
-      this.addEvent(classObj, 'mousewheel', this.onMouseWheel) //IE GOOGLE
+      this.addEvent(classObj, 'mousewheel', this.onMouseWheel) // IE GOOGLE
       this.addEvent(classObj, 'DOMMouseScroll', this.onMouseWheel) // FF
     }
   }
