@@ -39,15 +39,15 @@
         type: Number,
         default: 10
       },
-      pcWidth: { // 圆宽度
+      pcWidth: { // 宽度
         type: Number,
         default: 20
       },
-      pcHeight: { // 圆高度
+      pcHeight: { // 高度
         type: Number,
         default: 20
       },
-      innerColor: { // 圆的颜色
+      innerColor: { // 颜色
         type: String,
         default: 'red'
       },
