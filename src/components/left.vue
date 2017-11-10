@@ -16,26 +16,21 @@
       <br/>
       <br/>
     </el-collapse-item>
-    <el-collapse-item title="箭头" name="three" style="padding: 0px;position: relative;">
-      <pcRelation type="arrow" :xx-one="0" :yy-one="0" :xx-two="10" :yy-two="10" inner-color="rgba(53, 109, 222, 0.3)" :arrow-type="2" @clickSvg="clickSvg" :card-id="getUuid()"></pcRelation>
-    </el-collapse-item>
   </el-collapse>
 </template>
 <script>
   import pcSvg from '@/components/common/pc-svg'
-  import pcRelation from '@/components/common/pc-relation'
   import util from '@/util.js'
 
   export default {
     name: 'left',
     data () {
       return {
-        activeNames: ['first', 'second', 'three']
+        activeNames: ['first', 'second']
       }
     },
     components: {
-      pcSvg,
-      pcRelation
+      pcSvg
     },
     methods: {
       clickSvg: function (type) {
