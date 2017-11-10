@@ -1,6 +1,6 @@
 <template>
   <outer :left='left' :top='top' :pc-width='pcWidth' :pc-height='pcHeight' :card-id='cardId' :svg-type='svgType' :show-click-svg='showClickSvg'
-           :position='position' :z-index="zIndex" :inner-color='innerColor' :shw-foot-font='shwFootFont'
+           :position='position' :z-index="zIndex" :inner-color='innerColor' :shw-foot-font='shwFootFont' :scale-num="scaleNum"
          @showSvgClick="showSvgClick" :pc-scg-main-container-opt="pcScgMainContainerOpt" ref="outer">
     <innerSvg :card-id='cardId'
               :inner-color='innerColor'
@@ -94,6 +94,10 @@
       cardId: {
         type: String,
         default: '123456'
+      },
+      scaleNum: { // 缩放比例
+        type: Number,
+        default: 1
       },
       type: { // 图形样式 circle 圆，rect 矩形，star 星形，triangle等腰三角形等
         type: String,

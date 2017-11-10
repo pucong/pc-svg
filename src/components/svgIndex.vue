@@ -42,6 +42,10 @@
           top: 1,
           left: 1
         },
+        pcSvgMainOpt: { // 右侧显示栏相对top和left
+          top: 1,
+          left: 1
+        },
         pcSvgList: [],
         svg: {  // 图形参数默认值
           type: 'circle',
@@ -84,8 +88,8 @@
         var position = this.$refs.pcSvgOut.getPosition()
         const xx = parseInt(position.left)
         const yy = parseInt(position.top)
-        const top = $('.pcMain').position().top
-        const left = $('.pcMain').position().left
+        const top = this.pcSvgMainOpt.top
+        const left = this.pcSvgMainOpt.left
         var svg = {
           type: type,
           cardId: util.getUuid('card'),
@@ -102,6 +106,11 @@
       const left = $('.pcScgMainContainer').position().left
       this.pcSvgMainContainerOpt.top = top
       this.pcSvgMainContainerOpt.left = left
+      const topPcMain = $('.pcMain').position().top
+      const leftPcMain = $('.pcMain').position().left
+      this.pcSvgMainOpt.top = topPcMain
+      this.pcSvgMainOpt.left = leftPcMain
+
       var svgList = this.svgList
       for (var i in svgList) {
         svgList[i].cardId = util.getUuid('card') // 赋值card id

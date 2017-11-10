@@ -58,6 +58,10 @@
           return {top: 1, left: 1}
         }
       },
+      scaleNum: { // 缩放比例
+        type: Number,
+        default: 1
+      },
       shwFootFont: { // 是否显示脚部文字
         type: Boolean,
         default: false
@@ -109,9 +113,9 @@
       var model = this.dialogModel
       // 实现拖动效果
       $this.mousedown(function (e) {
-        model._move = true
-        model._x = e.pageX - parseInt(_this.getPosition().left)
-        model._y = e.pageY - parseInt(_this.getPosition().top)
+        if (_this.svgType === 3) {
+          model._move = true
+        }
         // 如果是点击出现的图形，则使其消失
         if (_this.showClickSvg) {
           _this.$emit('showSvgClick', this.type) // 触发点击图形消失事件
@@ -121,14 +125,16 @@
         util.setMousePosition({xx: e.pageX, yy: e.pageY})
         if (model._move) {
           // 移动时根据鼠标位置计算控件左上角的绝对位置
-          var x = e.pageX - model._x
-          var y = e.pageY - model._y
+          var x = e.originalEvent.x || e.originalEvent.layerX - model._x
+          var y = e.originalEvent.y || e.originalEvent.layerY - model._y
           if (x < 0) {
             x = 0
           }
           if (y < 0) {
             y = 0
           }
+//          x = x / _this.scaleNum
+//          y = y / _this.scaleNum
           _this.setPosition({top: y, left: x})
         }
       }).mouseup(function () {
