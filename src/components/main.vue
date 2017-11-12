@@ -17,6 +17,7 @@
              :footer-font="svg.footerFont"
              :input-font="svg.inputFont"
              :options="svg.options"
+             :pc-svg-main-opt="pcSvgMainOpt"
              :position="svg.position">
       </pcSvg>
     </pcScroller>
@@ -27,6 +28,7 @@
   import pcRelation from '@/components/common/pc-relation'
   import pcScroller from '@/components/other/pcScoller'
 //  import util from '@/util.js'
+  import $ from 'jquery'
 
   export default {
     name: 'main',
@@ -46,7 +48,11 @@
           '-webkit-transform': 'scale(1,1)', /* Safari and Chrome */
           zoom: 1
         },
-        scaleNum: 1
+        scaleNum: 1,
+        pcSvgMainOpt: { // 右侧显示栏相对top和left
+          top: 1,
+          left: 1
+        }
       }
     },
     components: {
@@ -66,6 +72,13 @@
         this.pcMainSvgClass['-ms-transform'] = 'scale(' + this.scaleNum + ',' + this.scaleNum + ')'
         this.pcMainSvgClass['-webkit-transform'] = 'scale(' + this.scaleNum + ',' + this.scaleNum + ')'
       }
+    },
+    mounted: function () {
+      // 计算显示栏相对高度
+      const topPcMain = $('.pcMain').position().top
+      const leftPcMain = $('.pcMain').position().left
+      this.pcSvgMainOpt.top = topPcMain
+      this.pcSvgMainOpt.left = leftPcMain
     }
   }
 </script>

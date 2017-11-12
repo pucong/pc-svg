@@ -25,7 +25,7 @@
   import outer from '@/components/common/outer'
 
   export default {
-    name: 'pc-circle',
+    name: 'pc-svg',
     props: {
       zIndex: { // card优先级
         type: Number,

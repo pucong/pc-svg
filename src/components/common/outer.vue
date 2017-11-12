@@ -122,6 +122,8 @@
         if (_this.svgType === 3) {
           model._move = true
         }
+        model._x = e.pageX - parseInt(_this.getPosition().left)
+        model._y = e.pageY - parseInt(_this.getPosition().top)
         // 如果是点击出现的图形，则使其消失
         if (_this.showClickSvg) {
           _this.$emit('showSvgClick', this.type) // 触发点击图形消失事件
@@ -131,8 +133,8 @@
         util.setMousePosition({xx: e.pageX, yy: e.pageY})
         if (model._move) {
           // 移动时根据鼠标位置计算控件左上角的绝对位置
-          var x = e.originalEvent.x || e.originalEvent.layerX - _this.pcSvgMainOpt.left
-          var y = e.originalEvent.y || e.originalEvent.layerY - _this.pcSvgMainOpt.top
+          var x = e.pageX - model._x
+          var y = e.pageY - model._y
           if (x < 0) {
             x = 0
           }
@@ -152,8 +154,8 @@
           if (_this.svgType === 1) {
             var xx = e.originalEvent.x || e.originalEvent.layerX || 0
             var yy = e.originalEvent.y || e.originalEvent.layerY || 0
-            xx = parseInt(xx) - parseInt(_this.pcSvgMainContainerOpt.left) - parseInt(_this.pcWidth) / 2
-            yy = parseInt(yy) - parseInt(_this.pcSvgMainContainerOpt.top) - parseInt(_this.pcHeight) / 2
+            xx = parseInt(xx) - parseInt(_this.pcSvgMainContainerOpt.left) - parseInt(_this.pcWidth) / 5
+            yy = parseInt(yy) - parseInt(_this.pcSvgMainContainerOpt.top) - parseInt(_this.pcHeight) / 5
             if (xx < 0) {
               xx = 0
             }

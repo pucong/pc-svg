@@ -88,8 +88,8 @@
         var position = this.$refs.pcSvgOut.getPosition()
         const xx = parseInt(position.left)
         const yy = parseInt(position.top)
-        const top = this.pcSvgMainOpt.top
-        const left = this.pcSvgMainOpt.left
+        const top = $('.pcMain').position().top
+        const left = $('.pcMain').position().left
         var svg = {
           type: type,
           cardId: util.getUuid('card'),
@@ -106,10 +106,6 @@
       const left = $('.pcSvgMainContainer').position().left
       this.pcSvgMainContainerOpt.top = top
       this.pcSvgMainContainerOpt.left = left
-      const topPcMain = $('.pcMain').position().top
-      const leftPcMain = $('.pcMain').position().left
-      this.pcSvgMainOpt.top = topPcMain
-      this.pcSvgMainOpt.left = leftPcMain
 
       var svgList = this.svgList
       for (var i in svgList) {
