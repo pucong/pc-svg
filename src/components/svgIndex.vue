@@ -1,5 +1,5 @@
 <template>
-    <el-container class="pcScgMainContainer">
+    <el-container class="pcSvgMainContainer">
       <el-aside width="15%" style="border-right: 2px solid rgba(53, 109, 222, 0.54);position: relative;">
         <pcLeft @clickSvg="clickSvg"></pcLeft>
       </el-aside>
@@ -8,9 +8,9 @@
       </el-main>
       <!--点击左侧出现的图形-->
       <pcSvg :type="mouseOption.showClickSvgType" ref="pcSvgOut" v-if="mouseOption.showClickSvg" :svg-type="1"
-             :pc-scg-main-container-opt="pcSvgMainContainerOpt" :show-click-svg='mouseOption.showClickSvg'
+             :pc-svg-main-container-opt="pcSvgMainContainerOpt" :show-click-svg='mouseOption.showClickSvg'
              position="absolute" inner-color="rgba(53, 109, 222, 0.3)" :pc-width="100" :pc-height="100"
-             :top="clickSvgPosition.yy" :left="clickSvgPosition.xx"
+             :top="clickSvgPosition.yy" :left="clickSvgPosition.xx" :pc-svg-main-opt="pcSvgMainOpt"
              @showSvgClick="showSvgClick"
       ></pcSvg>
     </el-container>
@@ -102,8 +102,8 @@
     },
     mounted: function () {
       // 计算显示栏相对高度
-      const top = $('.pcScgMainContainer').position().top
-      const left = $('.pcScgMainContainer').position().left
+      const top = $('.pcSvgMainContainer').position().top
+      const left = $('.pcSvgMainContainer').position().left
       this.pcSvgMainContainerOpt.top = top
       this.pcSvgMainContainerOpt.left = left
       const topPcMain = $('.pcMain').position().top

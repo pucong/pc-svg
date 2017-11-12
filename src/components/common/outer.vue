@@ -52,7 +52,13 @@
         type: Boolean,
         default: false
       },
-      pcScgMainContainerOpt: { // 显示栏的相对位置
+      pcSvgMainContainerOpt: { // 显示栏的最外侧相对位置
+        type: Object,
+        default: function () {
+          return {top: 1, left: 1}
+        }
+      },
+      pcSvgMainOpt: { // 显示栏的相对位置
         type: Object,
         default: function () {
           return {top: 1, left: 1}
@@ -125,8 +131,8 @@
         util.setMousePosition({xx: e.pageX, yy: e.pageY})
         if (model._move) {
           // 移动时根据鼠标位置计算控件左上角的绝对位置
-          var x = e.originalEvent.x || e.originalEvent.layerX - model._x
-          var y = e.originalEvent.y || e.originalEvent.layerY - model._y
+          var x = e.originalEvent.x || e.originalEvent.layerX - _this.pcSvgMainOpt.left
+          var y = e.originalEvent.y || e.originalEvent.layerY - _this.pcSvgMainOpt.top
           if (x < 0) {
             x = 0
           }
@@ -141,13 +147,13 @@
         model._move = false
       })
       // 实现点击图形，跟随鼠标
-      $('.pcScgMainContainer').mousemove(e => {
+      $('.pcSvgMainContainer').mousemove(e => {
         if (_this.showClickSvg) {
           if (_this.svgType === 1) {
             var xx = e.originalEvent.x || e.originalEvent.layerX || 0
             var yy = e.originalEvent.y || e.originalEvent.layerY || 0
-            xx = parseInt(xx) - parseInt(_this.pcScgMainContainerOpt.left) - parseInt(_this.pcWidth) / 2
-            yy = parseInt(yy) - parseInt(_this.pcScgMainContainerOpt.top) - parseInt(_this.pcHeight) / 2
+            xx = parseInt(xx) - parseInt(_this.pcSvgMainContainerOpt.left) - parseInt(_this.pcWidth) / 2
+            yy = parseInt(yy) - parseInt(_this.pcSvgMainContainerOpt.top) - parseInt(_this.pcHeight) / 2
             if (xx < 0) {
               xx = 0
             }
