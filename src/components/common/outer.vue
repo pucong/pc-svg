@@ -154,8 +154,8 @@
           if (_this.svgType === 1) {
             var xx = e.originalEvent.x || e.originalEvent.layerX || 0
             var yy = e.originalEvent.y || e.originalEvent.layerY || 0
-            xx = parseInt(xx) - parseInt(_this.pcSvgMainContainerOpt.left) - parseInt(_this.pcWidth) / 5
-            yy = parseInt(yy) - parseInt(_this.pcSvgMainContainerOpt.top) - parseInt(_this.pcHeight) / 5
+            xx = parseInt(xx) - parseInt(_this.pcSvgMainContainerOpt.left) - parseInt(_this.pcWidth) / 2
+            yy = parseInt(yy) - parseInt(_this.pcSvgMainContainerOpt.top) - parseInt(_this.pcHeight) / 2
             if (xx < 0) {
               xx = 0
             }
