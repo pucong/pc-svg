@@ -112,10 +112,11 @@
         }
         var _x = e.pageX - parseInt(_this.getPosition().left)
         var _y = e.pageY - parseInt(_this.getPosition().top)
-        _x = _x * _this.$store.getters['pcSvgStore/GET_ZOOM_RATE']
-        _y = _y * _this.$store.getters['pcSvgStore/GET_ZOOM_RATE']
+        _x = _x / _this.$store.getters['pcSvgStore/GET_ZOOM_RATE']
+        _y = _y / _this.$store.getters['pcSvgStore/GET_ZOOM_RATE']
         model._x = _x
         model._y = _y
+        console.log(_y)
         // 如果是点击出现的图形，则使其消失
         if (_this.showClickSvg) {
           _this.$emit('showSvgClick', this.type) // 触发点击图形消失事件
@@ -133,8 +134,8 @@
           if (y < 0) {
             y = 0
           }
-          x = x * _this.$store.getters['pcSvgStore/GET_ZOOM_RATE']
-          y = y * _this.$store.getters['pcSvgStore/GET_ZOOM_RATE']
+          x = x / _this.$store.getters['pcSvgStore/GET_ZOOM_RATE']
+          y = y / _this.$store.getters['pcSvgStore/GET_ZOOM_RATE']
           _this.setPosition({top: y, left: x})
         }
       }).mouseup(function () {
