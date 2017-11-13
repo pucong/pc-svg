@@ -2,7 +2,7 @@
   <div v-bind:style="pcMainSvgClass" class="pcMainSvgClass">
     <pcScroller @pcScroller="onMouseWheel" >
       <pcRelation type="arrow" :xx-one="100" :yy-one="100" :pc-width="500" :pc-height="500" :xx-two="300" :yy-two="300"
-                  inner-color="rgba(53, 109, 222, 0.3)" :arrow-type="2" :card-id="1234123"></pcRelation>
+                  inner-color="rgba(53, 109, 222, 0.3)" :arrow-type="2"></pcRelation>
 
       <pcSvg v-for="(svg, index) in svgList" :key="svg.cardId"
              :type="svg.type"
@@ -10,14 +10,12 @@
              :inner-color="svg.innerColor"
              :left="svg.left"
              :top="svg.top"
-             :scale-num="scaleNum"
              :pc-width="svg.pcWidth"
              :pc-height="svg.pcHeight"
              :shw-foot-font="svg.shwFootFont"
              :footer-font="svg.footerFont"
              :input-font="svg.inputFont"
              :options="svg.options"
-             :pc-svg-main-opt="pcSvgMainOpt"
              :position="svg.position">
       </pcSvg>
     </pcScroller>
@@ -27,7 +25,6 @@
   import pcSvg from '@/components/common/pc-svg'
   import pcRelation from '@/components/common/pc-relation'
   import pcScroller from '@/components/other/pcScoller'
-//  import util from '@/util.js'
   import $ from 'jquery'
 
   export default {
@@ -71,6 +68,11 @@
         this.pcMainSvgClass.transform = 'scale(' + this.scaleNum + ',' + this.scaleNum + ')'
         this.pcMainSvgClass['-ms-transform'] = 'scale(' + this.scaleNum + ',' + this.scaleNum + ')'
         this.pcMainSvgClass['-webkit-transform'] = 'scale(' + this.scaleNum + ',' + this.scaleNum + ')'
+        // 保存到store
+        this.$store.commit({
+          type: 'pcSvgStore/UP_ZOOM_RATE',
+          val: this.scaleNum
+        })
       }
     },
     mounted: function () {
@@ -79,6 +81,11 @@
       const leftPcMain = $('.pcMain').position().left
       this.pcSvgMainOpt.top = topPcMain
       this.pcSvgMainOpt.left = leftPcMain
+      // 保存到store
+      this.$store.commit({
+        type: 'pcSvgStore/UP_PCSVG_MAIN_OPT',
+        val: this.pcSvgMainOpt
+      })
     }
   }
 </script>

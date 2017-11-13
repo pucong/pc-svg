@@ -23,16 +23,16 @@ const store = {
   },
   mutations: {
     // 画布缩放比例
-    [UP_ZOOM_RATE] (state, value) {
-      state.scaleNum = value
+    [UP_ZOOM_RATE] (state, payload) {
+      state.scaleNum = payload.val
     },
     // 最外层显示栏的相对位置
-    [UP_PCSVG_MAIN_CONTAINER_OPT] (state, value) {
-      state.pcSvgMainContainerOpt = value
+    [UP_PCSVG_MAIN_CONTAINER_OPT] (state, payload) {
+      state.pcSvgMainContainerOpt = payload.val
     },
     // 里层显示栏的相对位置
-    [UP_PCSVG_MAIN_OPT] (state, value) {
-      state.pcSvgMainOpt = value
+    [UP_PCSVG_MAIN_OPT] (state, payload) {
+      state.pcSvgMainOpt = payload.val
     }
   },
   actions: {

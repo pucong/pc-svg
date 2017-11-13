@@ -1,7 +1,7 @@
 <template>
   <outer :left='left' :top='top' :pc-width='pcWidth' :pc-height='pcHeight' :card-id='cardId' :svg-type='svgType' :show-click-svg='showClickSvg'
-           :position='position' :z-index="zIndex" :inner-color='innerColor' :shw-foot-font='shwFootFont' :scale-num="scaleNum"
-         @showSvgClick="showSvgClick" :pc-svg-main-container-opt="pcSvgMainContainerOpt" ref="outer" :pc-svg-main-opt="pcSvgMainOpt">
+           :position='position' :z-index="zIndex" :inner-color='innerColor' :shw-foot-font='shwFootFont'
+         @showSvgClick="showSvgClick" ref="outer">
     <innerSvg :card-id='cardId'
               :inner-color='innerColor'
               :left='left'
@@ -79,18 +79,6 @@
         type: Boolean,
         default: false
       },
-      pcSvgMainContainerOpt: { // 显示栏的最外侧相对位置
-        type: Object,
-        default: function () {
-          return {top: 1, left: 1}
-        }
-      },
-      pcSvgMainOpt: { // 显示栏的相对位置
-        type: Object,
-        default: function () {
-          return {top: 1, left: 1}
-        }
-      },
       options: { // 其他参数
         type: Object,
         default: function () {
@@ -116,7 +104,6 @@
     },
     data: function () {
       return {
-
       }
     },
     methods: {

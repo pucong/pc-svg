@@ -8,9 +8,9 @@
       </el-main>
       <!--点击左侧出现的图形-->
       <pcSvg :type="mouseOption.showClickSvgType" ref="pcSvgOut" v-if="mouseOption.showClickSvg" :svg-type="1"
-             :pc-svg-main-container-opt="pcSvgMainContainerOpt" :show-click-svg='mouseOption.showClickSvg'
+             :show-click-svg='mouseOption.showClickSvg'
              position="absolute" inner-color="rgba(53, 109, 222, 0.3)" :pc-width="100" :pc-height="100"
-             :top="clickSvgPosition.yy" :left="clickSvgPosition.xx" :pc-svg-main-opt="pcSvgMainContainerOpt"
+             :top="clickSvgPosition.yy" :left="clickSvgPosition.xx"
              @showSvgClick="showSvgClick"
       ></pcSvg>
     </el-container>
@@ -102,7 +102,11 @@
       const left = $('.pcSvgMainContainer').position().left
       this.pcSvgMainContainerOpt.top = top
       this.pcSvgMainContainerOpt.left = left
-
+      // 保存到store
+      this.$store.commit({
+        type: 'pcSvgStore/UP_PCSVG_MAIN_CONTAINER_OPT',
+        val: this.pcSvgMainContainerOpt
+      })
       var svgList = this.svgList
       for (var i in svgList) {
         svgList[i].cardId = util.getUuid('card') // 赋值card id
