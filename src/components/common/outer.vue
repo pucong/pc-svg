@@ -52,18 +52,6 @@
         type: Boolean,
         default: false
       },
-      pcSvgMainContainerOpt: { // 显示栏的最外侧相对位置
-        type: Object,
-        default: function () {
-          return {top: 1, left: 1}
-        }
-      },
-      pcSvgMainOpt: { // 显示栏的相对位置
-        type: Object,
-        default: function () {
-          return {top: 1, left: 1}
-        }
-      },
       scaleNum: { // 缩放比例
         type: Number,
         default: 1
@@ -102,13 +90,13 @@
     },
     methods: {
       // 获取当前位置
-      getPosition: function () {
+      getPosition () {
         return {
           top: this.cardStyleObject.top,
           left: this.cardStyleObject.left
         }
       },
-      setPosition: function (opt) {
+      setPosition (opt) {
         this.cardStyleObject.top = opt.top + 'px'
         this.cardStyleObject.left = opt.left + 'px'
       }
@@ -122,8 +110,12 @@
         if (_this.svgType === 3) {
           model._move = true
         }
-        model._x = e.pageX - parseInt(_this.getPosition().left)
-        model._y = e.pageY - parseInt(_this.getPosition().top)
+        var _x = e.pageX - parseInt(_this.getPosition().left)
+        var _y = e.pageY - parseInt(_this.getPosition().top)
+        _x = _x * _this.$store.getters['pcSvgStore/GET_ZOOM_RATE']
+        _y = _y * _this.$store.getters['pcSvgStore/GET_ZOOM_RATE']
+        model._x = _x
+        model._y = _y
         // 如果是点击出现的图形，则使其消失
         if (_this.showClickSvg) {
           _this.$emit('showSvgClick', this.type) // 触发点击图形消失事件
@@ -141,21 +133,22 @@
           if (y < 0) {
             y = 0
           }
-//          x = x / _this.scaleNum
-//          y = y / _this.scaleNum
+          x = x * _this.$store.getters['pcSvgStore/GET_ZOOM_RATE']
+          y = y * _this.$store.getters['pcSvgStore/GET_ZOOM_RATE']
           _this.setPosition({top: y, left: x})
         }
       }).mouseup(function () {
         model._move = false
       })
+      const pcSvgMainContainerOpt = this.$store.getters['pcSvgStore/GET_PCSVG_MAIN_CONTAINER_OPT']
       // 实现点击图形，跟随鼠标
       $('.pcSvgMainContainer').mousemove(e => {
         if (_this.showClickSvg) {
           if (_this.svgType === 1) {
             var xx = e.originalEvent.x || e.originalEvent.layerX || 0
             var yy = e.originalEvent.y || e.originalEvent.layerY || 0
-            xx = parseInt(xx) - parseInt(_this.pcSvgMainContainerOpt.left) - parseInt(_this.pcWidth) / 2
-            yy = parseInt(yy) - parseInt(_this.pcSvgMainContainerOpt.top) - parseInt(_this.pcHeight) / 2
+            xx = parseInt(xx) - parseInt(pcSvgMainContainerOpt.left) - parseInt(_this.pcWidth) / 2
+            yy = parseInt(yy) - parseInt(pcSvgMainContainerOpt.top) - parseInt(_this.pcHeight) / 2
             if (xx < 0) {
               xx = 0
             }

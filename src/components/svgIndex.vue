@@ -119,7 +119,7 @@
   }
 </script>
 <style scoped>
-  .pcScgMainContainer{
+  .pcSvgMainContainer{
     height: 85%;
     border: 1px solid #eee;
     position: relative;
