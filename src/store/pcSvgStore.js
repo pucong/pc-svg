@@ -4,6 +4,7 @@ export const UP_PCSVG_MAIN_OPT = 'UP_PCSVG_MAIN_OPT'
 export const GET_ZOOM_RATE = 'GET_ZOOM_RATE'
 export const GET_PCSVG_MAIN_CONTAINER_OPT = 'GET_PCSVG_MAIN_CONTAINER_OPT'
 export const GET_PCSVG_MAIN_OPT = 'GET_PCSVG_MAIN_OPT'
+export const GET_PCSVG_OPT = 'GET_PCSVG_OPT'
 
 const store = {
   namespaced: true,
@@ -19,6 +20,21 @@ const store = {
     pcSvgMainOpt: {
       top: 1,
       left: 1
+    },
+    svg: {  // 图形参数默认值
+      type: 'circle',
+      innerColor: 'rgba(53, 109, 222, 0.3)',
+      left: 100,
+      top: 100,
+      pcWidth: 100,
+      pcHeight: 100,
+      position: 'absolute',
+      shwFootFont: false,
+      footerFont: 'pcSvg',
+      inputFont: 'pcSvg',
+      options: { // 其他参数
+
+      }
     }
   },
   mutations: {
@@ -47,6 +63,9 @@ const store = {
     },
     [GET_PCSVG_MAIN_OPT]: state => {
       return state.pcSvgMainOpt
+    },
+    [GET_PCSVG_OPT]: state => {
+      return state.svg
     }
   }
 }

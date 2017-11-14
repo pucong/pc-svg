@@ -91,16 +91,28 @@ export default {
    * @param three
    * @returns {number}
    */
-  gouGuFunctionThree: function (three) {
+  gouGuFunctionThree (three) {
     let one = Math.pow(three, 2) / 2
     one = Math.sqrt(one)
     return Math.ceil(one)
   },
-  getMousePosition: function () {
+  getMousePosition () {
     return this.point
   },
-  setMousePosition: function (opt) {
+  setMousePosition (opt) {
     this.point.xx = opt.xx
     this.point.yy = opt.yy
+  },
+  // 获取最大值和最大index
+  getMax (arr, attr) {
+    var maxIndex = 0
+    var max = 0
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i][attr] > max) {
+        max = arr[i][attr]
+        maxIndex = i
+      }
+    }
+    return {max, maxIndex}
   }
 }

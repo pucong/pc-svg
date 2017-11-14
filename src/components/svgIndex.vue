@@ -43,21 +43,6 @@
           left: 1
         },
         pcSvgList: [],
-        svg: {  // 图形参数默认值
-          type: 'circle',
-          innerColor: 'rgba(53, 109, 222, 0.3)',
-          left: 100,
-          top: 100,
-          pcWidth: 100,
-          pcHeight: 100,
-          position: 'absolute',
-          shwFootFont: false,
-          footerFont: 'pcSvg',
-          inputFont: 'pcSvg',
-          options: { // 其他参数
-
-          }
-        },
         clickSvgPosition: {
           xx: 1,
           yy: 1
@@ -93,7 +78,15 @@
           left: xx - parseInt(left),
           top: yy - parseInt(top)
         }
-        svg = $.extend({}, this.svg, svg)
+        // 获取最大的zIndex
+        var maxOpt = util.getMax(this.pcSvgList, 'zIndex')
+        svg.zIndex = maxOpt.max
+        // 如果是平行四边形，则大小需要设定
+        if (type === 'parallelogram') {
+          svg.pcWidth = 110
+          svg.pcHeight = 80
+        }
+        svg = $.extend({}, this.$store.getters['pcSvgStore/GET_PCSVG_OPT'], svg)
         this.pcSvgList.push(svg)
       }
     },
@@ -113,7 +106,7 @@
         svgList[i].cardId = util.getUuid('card') // 赋值card id
         // 合并默认值
         var svg = svgList[i]
-        svg = $.extend({}, this.svg, svg)
+        svg = $.extend({}, this.$store.getters['pcSvgStore/GET_PCSVG_OPT'], svg)
         this.pcSvgList.push(svg)
       }
     }
