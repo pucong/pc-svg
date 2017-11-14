@@ -76,16 +76,17 @@
         // 获取鼠标当前位置
         const point = util.getMousePosition()
         // 设置初始位置
-        this.clickSvgPosition.xx = (point.xx - parseInt(this.pcSvgMainContainerOpt.left)) / 2
-        this.clickSvgPosition.yy = (point.yy - parseInt(this.pcSvgMainContainerOpt.top))
+        const pcSvgMainContainerOpt = this.$store.getters['pcSvgStore/GET_PCSVG_MAIN_CONTAINER_OPT'].top
+        this.clickSvgPosition.xx = (point.xx - parseInt(pcSvgMainContainerOpt.left)) / 2
+        this.clickSvgPosition.yy = (point.yy - parseInt(pcSvgMainContainerOpt.top)) / 2
       },
       showSvgClick: function (type) {
         this.mouseOption.showClickSvg = false
         var position = this.$refs.pcSvgOut.getPosition()
         const xx = parseInt(position.left)
         const yy = parseInt(position.top)
-        const top = $('.pcMain').position().top
-        const left = $('.pcMain').position().left
+        const top = this.$store.getters['pcSvgStore/GET_PCSVG_MAIN_OPT'].top
+        const left = this.$store.getters['pcSvgStore/GET_PCSVG_MAIN_OPT'].left
         var svg = {
           type: type,
           cardId: util.getUuid('card'),

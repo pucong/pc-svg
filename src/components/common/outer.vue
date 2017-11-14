@@ -52,10 +52,6 @@
         type: Boolean,
         default: false
       },
-      scaleNum: { // 缩放比例
-        type: Number,
-        default: 1
-      },
       shwFootFont: { // 是否显示脚部文字
         type: Boolean,
         default: false
@@ -116,7 +112,6 @@
         _y = _y / _this.$store.getters['pcSvgStore/GET_ZOOM_RATE']
         model._x = _x
         model._y = _y
-        console.log(_y)
         // 如果是点击出现的图形，则使其消失
         if (_this.showClickSvg) {
           _this.$emit('showSvgClick', this.type) // 触发点击图形消失事件
