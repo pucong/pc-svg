@@ -1,7 +1,8 @@
 <template>
+  <div>
   <outer :left='left' :top='top' :pc-width='pcWidth' :pc-height='pcHeight' :card-id='cardId' :svg-type='svgType' :show-click-svg='showClickSvg'
            :position='position' :z-index="zIndex" :inner-color='innerColor' :shw-foot-font='shwFootFont'
-         @showSvgClick="showSvgClick" ref="outer">
+         @showSvgClick="showSvgClick" ref="outer" @outerHover="outerHover"  @outerHoverDis="outerHoverDis">
     <innerSvg :card-id='cardId'
               :inner-color='innerColor'
               :left='left'
@@ -19,6 +20,7 @@
                @clickSvg="clickSvg"
     ></innerSvg>
   </outer>
+ </div>
 </template>
 <script>
   import innerSvg from '@/components/common/innerSvg'
@@ -120,6 +122,24 @@
       },
       getPosition: function () {
         return this.$refs.outer.getPosition()
+      },
+      // hover事件触发
+      outerHover (e) {
+        if (this.svgType === 3) {
+          const opt = {
+            cardId: this.cardId,
+            event: e
+          }
+          this.$emit('outerHover', opt)
+        }
+      },
+      // 取消hover事件
+      outerHoverDis (e) {
+        const opt = {
+          cardId: this.cardId,
+          event: e
+        }
+        this.$emit('outerHoverDis', opt)
       }
     }
   }

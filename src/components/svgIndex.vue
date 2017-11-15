@@ -4,7 +4,7 @@
         <pcLeft @clickSvg="clickSvg"></pcLeft>
       </el-aside>
       <el-main style="padding: 0;">
-        <pcMain class="pcMain" :svg-list="pcSvgList"></pcMain>
+        <pcMain class="pcMain" :svg-list="pcSvgList" @outerHover="outerHover" @outerHoverDis="outerHoverDis"></pcMain>
       </el-main>
       <!--点击左侧出现的图形-->
       <pcSvg :type="mouseOption.showClickSvgType" ref="pcSvgOut" v-if="mouseOption.showClickSvg" :svg-type="1"
@@ -13,12 +13,15 @@
              :top="clickSvgPosition.yy" :left="clickSvgPosition.xx"
              @showSvgClick="showSvgClick"
       ></pcSvg>
+      <!--hover出现的选中关系图标-->
+      <outerRelation v-if="showBoor"></outerRelation>
     </el-container>
 </template>
 <script>
   import pcLeft from '@/components/left'
   import pcMain from '@/components/main'
   import pcSvg from '@/components/common/pc-svg'
+  import outerRelation from '@/components/common/outerRelation'
   import util from '@/util.js'
   import $ from 'jquery'
 
@@ -46,12 +49,14 @@
         clickSvgPosition: {
           xx: 1,
           yy: 1
-        }
+        },
+        showBoor: false
       }
     },
     components: {
       pcMain,
       pcLeft,
+      outerRelation,
       pcSvg
     },
     methods: {
@@ -88,6 +93,15 @@
         }
         svg = $.extend({}, this.$store.getters['pcSvgStore/GET_PCSVG_OPT'], svg)
         this.pcSvgList.push(svg)
+      },
+      // hover事件触发
+      outerHover (opt) {
+        console.log(opt)
+        this.showBoor = true
+      },
+      // 取消hover事件
+      outerHoverDis (opt) {
+        this.showBoor = false
       }
     },
     mounted: function () {

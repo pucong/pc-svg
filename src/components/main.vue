@@ -16,7 +16,9 @@
              :footer-font="svg.footerFont"
              :input-font="svg.inputFont"
              :options="svg.options"
-             :position="svg.position">
+             :position="svg.position"
+             @outerHover="outerHover"
+             @outerHoverDis="outerHoverDis">
       </pcSvg>
     </pcScroller>
   </div>
@@ -73,6 +75,14 @@
           type: 'pcSvgStore/UP_ZOOM_RATE',
           val: this.scaleNum
         })
+      },
+      // hover事件触发
+      outerHover (opt) {
+        this.$emit('outerHover', opt)
+      },
+      // 取消hover事件
+      outerHoverDis (opt) {
+        this.$emit('outerHoverDis', opt)
       }
     },
     mounted: function () {

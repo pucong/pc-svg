@@ -156,10 +156,16 @@
         }
       })
       // 实现hover
-      $this.hover(function () {
+      $this.hover(function (e) {
+        // 显示动态效果
         $this.addClass('animated tada')
-      }, function () {
+        // 触发hover事件
+        _this.$emit('outerHover', e)
+      }, function (e) {
+        // 去除动态效果
         $this.removeClass('animated tada')
+        // 触发取消hover事件
+        _this.$emit('outerHoverDis', e)
       })
     }
   }
