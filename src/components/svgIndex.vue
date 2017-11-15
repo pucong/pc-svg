@@ -96,7 +96,6 @@
       },
       // hover事件触发
       outerHover (opt) {
-        console.log(opt)
         this.showBoor = true
       },
       // 取消hover事件
