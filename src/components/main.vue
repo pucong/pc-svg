@@ -20,6 +20,8 @@
              @outerHover="outerHover"
              @outerHoverDis="outerHoverDis">
       </pcSvg>
+      <!--hover出现的选中关系图标-->
+      <outerRelation v-if="showBoor" :top="svg.top" :left="svg.left"></outerRelation>
     </pcScroller>
   </div>
 </template>
@@ -27,7 +29,9 @@
   import pcSvg from '@/components/common/pc-svg'
   import pcRelation from '@/components/common/pc-relation'
   import pcScroller from '@/components/other/pcScoller'
+  import outerRelation from '@/components/common/outerRelation'
   import $ from 'jquery'
+  import util from '@/util.js'
 
   export default {
     name: 'main',
@@ -51,12 +55,19 @@
         pcSvgMainOpt: { // 右侧显示栏相对top和left
           top: 1,
           left: 1
+        },
+        showBoor: false, // 是否显示关系列表
+        svg: { // 显示关系列表的图形
+          cardId: '123123',
+          left: 100,
+          top: 0
         }
       }
     },
     components: {
       pcRelation,
       pcScroller,
+      outerRelation,
       pcSvg
     },
     methods: {
@@ -77,12 +88,24 @@
         })
       },
       // hover事件触发
-      outerHover (opt) {
-        this.$emit('outerHover', opt)
+      outerHover (optOne) {
+        console.log(optOne)
+        var opt = optOne.svg
+        if (!opt.cardId) {
+          opt.cardId = util.getUuid('svgBoor')
+        }
+        if (!opt.left) {
+          opt.left = opt.left + opt.pcWidth
+        }
+        if (!opt.top) {
+          opt.top = opt.top + opt.pcHeight
+        }
+        this.svg = opt
+        this.showBoor = true
       },
       // 取消hover事件
       outerHoverDis (opt) {
-        this.$emit('outerHoverDis', opt)
+        this.showBoor = true
       }
     },
     mounted: function () {

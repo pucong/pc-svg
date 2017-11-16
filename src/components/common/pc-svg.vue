@@ -127,7 +127,13 @@
       outerHover (e) {
         if (this.svgType === 3) {
           const opt = {
-            cardId: this.cardId,
+            svg: {
+              cardId: this.cardId,
+              left: this.left,
+              top: this.top,
+              pcWidth: this.pcWidth,
+              pcHeight: this.pcHeight
+            },
             event: e
           }
           this.$emit('outerHover', opt)
@@ -136,7 +142,13 @@
       // 取消hover事件
       outerHoverDis (e) {
         const opt = {
-          cardId: this.cardId,
+          svg: {
+            cardId: this.cardId,
+            left: this.left,
+            top: this.top,
+            pcWidth: this.pcWidth,
+            pcHeight: this.pcHeight
+          },
           event: e
         }
         this.$emit('outerHoverDis', opt)

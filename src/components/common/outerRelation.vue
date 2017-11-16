@@ -1,5 +1,5 @@
 <template>
-  <div v-bind:style="relationDivClass">
+  <div v-bind:style="{top: this.top + 'px',left: this.left + 'px' }" class="relationDivClass">
 
   </div>
 </template>
@@ -7,9 +7,17 @@
   export default {
     name: 'outerRelation',
     props: {
-      zIndex: { // 浮现程度
+      left: { // x坐标
         type: Number,
-        default: 50
+        default: 10
+      },
+      top: { // y坐标
+        type: Number,
+        default: 10
+      },
+      cardId: {
+        type: String,
+        default: '123456'
       }
     },
     data () {
@@ -17,7 +25,8 @@
         relationDivClass: {
           'height': '50px',
           'width': '50px',
-          'background-color': 'aqua'
+          'background-color': 'aqua',
+          'position': 'absolute'
         }
       }
     },
