@@ -21,7 +21,7 @@
              @outerHoverDis="outerHoverDis">
       </pcSvg>
       <!--hover出现的选中关系图标-->
-      <outerRelation v-if="showBoor" :top="svg.top" :left="svg.left"></outerRelation>
+      <outerRelation v-if="showBoor" ref="outerRelation" :top="svg.top" :left="svg.left"></outerRelation>
     </pcScroller>
   </div>
 </template>
@@ -59,8 +59,8 @@
         showBoor: false, // 是否显示关系列表
         svg: { // 显示关系列表的图形
           cardId: '123123',
-          left: 100,
-          top: 0
+          left: '100px',
+          top: '100px'
         }
       }
     },
@@ -89,7 +89,6 @@
       },
       // hover事件触发
       outerHover (optOne) {
-        console.log(optOne)
         var opt = optOne.svg
         if (!opt.cardId) {
           opt.cardId = util.getUuid('svgBoor')
@@ -105,7 +104,7 @@
       },
       // 取消hover事件
       outerHoverDis (opt) {
-        this.showBoor = true
+        this.showBoor = false
       }
     },
     mounted: function () {

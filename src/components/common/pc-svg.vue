@@ -129,8 +129,8 @@
           const opt = {
             svg: {
               cardId: this.cardId,
-              left: this.left,
-              top: this.top,
+              left: this.$refs.outer.getPosition().left,
+              top: this.$refs.outer.getPosition().top,
               pcWidth: this.pcWidth,
               pcHeight: this.pcHeight
             },
