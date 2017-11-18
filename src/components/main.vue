@@ -17,6 +17,7 @@
              :input-font="svg.inputFont"
              :options="svg.options"
              :position="svg.position"
+             @typeThreeSvgMove="typeThreeSvgMove"
              @outerHover="outerHover"
              @outerHoverDis="outerHoverDis">
       </pcSvg>
@@ -93,11 +94,11 @@
         if (!opt.cardId) {
           opt.cardId = util.getUuid('svgBoor')
         }
-        if (!opt.left) {
-          opt.left = opt.left + opt.pcWidth
+        if (opt.left) {
+          opt.left = parseInt(opt.left) + opt.pcWidth + 'px'
         }
-        if (!opt.top) {
-          opt.top = opt.top + opt.pcHeight
+        if (opt.top) {
+          opt.top = parseInt(opt.top) + 'px'
         }
         this.svg = opt
         this.showBoor = true
@@ -105,6 +106,9 @@
       // 取消hover事件
       outerHoverDis (opt) {
         this.showBoor = false
+      },
+      typeThreeSvgMove () {
+        this.outerHoverDis()
       }
     },
     mounted: function () {

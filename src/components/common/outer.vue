@@ -105,6 +105,7 @@
       $this.mousedown(function (e) {
         if (_this.svgType === 3) {
           model._move = true
+          _this.$emit('typeThreeSvgMove') // 触发移动事件
         }
         var _x = e.pageX - parseInt(_this.getPosition().left)
         var _y = e.pageY - parseInt(_this.getPosition().top)

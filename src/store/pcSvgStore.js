@@ -28,6 +28,7 @@ const store = {
       top: 100,
       pcWidth: 100,
       pcHeight: 100,
+      zIndex: 100,
       position: 'absolute',
       shwFootFont: false,
       footerFont: 'pcSvg',

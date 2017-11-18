@@ -79,14 +79,17 @@
           top: yy - parseInt(top)
         }
         // 获取最大的zIndex
-        var maxOpt = util.getMax(this.pcSvgList, 'zIndex')
-        svg.zIndex = maxOpt.max
+        if (this.pcSvgList.length > 0) {
+          const maxOpt = util.getMax(this.pcSvgList, 'zIndex')
+          svg.zIndex = maxOpt.max + 1
+        }
         // 如果是平行四边形，则大小需要设定
         if (type === 'parallelogram') {
           svg.pcWidth = 110
           svg.pcHeight = 80
         }
         svg = $.extend({}, this.$store.getters['pcSvgStore/GET_PCSVG_OPT'], svg)
+        console.log(svg.zIndex)
         this.pcSvgList.push(svg)
       }
     },

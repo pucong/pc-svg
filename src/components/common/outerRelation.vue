@@ -23,21 +23,9 @@
     },
     data () {
       return {
-        relationDivClass: {
-          'height': '50px',
-          'width': '50px',
-          'background-color': 'aqua',
-          'position': 'absolute',
-          'top': this.getTop,
-          'left': this.getLeft
-        }
       }
     },
     methods: {
-      setPostion (top, left) {
-        this.relationDivClass['top'] = top
-        this.relationDivClass['left'] = left
-      }
     },
     computed: {
       getTop () {
@@ -53,6 +41,7 @@
   .relationDivClass {
     height: 50px;
     width: 50px;
+    z-index: 1000;
     background-color: aqua;
     position: absolute;
   }

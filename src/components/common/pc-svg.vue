@@ -2,7 +2,7 @@
   <div>
   <outer :left='left' :top='top' :pc-width='pcWidth' :pc-height='pcHeight' :card-id='cardId' :svg-type='svgType' :show-click-svg='showClickSvg'
            :position='position' :z-index="zIndex" :inner-color='innerColor' :shw-foot-font='shwFootFont'
-         @showSvgClick="showSvgClick" ref="outer" @outerHover="outerHover"  @outerHoverDis="outerHoverDis">
+         @showSvgClick="showSvgClick" @typeThreeSvgMove="typeThreeSvgMove" ref="outer" @outerHover="outerHover"  @outerHoverDis="outerHoverDis">
     <innerSvg :card-id='cardId'
               :inner-color='innerColor'
               :left='left'
@@ -152,6 +152,9 @@
           event: e
         }
         this.$emit('outerHoverDis', opt)
+      },
+      typeThreeSvgMove () {
+        this.$emit('typeThreeSvgMove', this.cardId) // 触发移动事件
       }
     }
   }
