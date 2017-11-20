@@ -1,8 +1,12 @@
 <!--这是圆形-->
 <template>
-    <div v-bind:style='circleInnerStyleObject'>
-
-    </div>
+  <div v-bind:style='circleInnerStyleObject'>
+    <svg width="100%" height="100%" version="1.1"
+         xmlns="http://www.w3.org/2000/svg">
+      <circle :cx="pcWidth / 2" :cy="pcHeight / 2" :r="r" stroke="black"
+              stroke-width="1" :fill="innerColor"/>
+    </svg>
+  </div>
 </template>
 <script>
   export default {
@@ -24,16 +28,9 @@
     data () {
       return {
         circleInnerStyleObject: { // 圆的内部样式
-          position: 'absolute',
-//          'position': 'relative',
-
-          width: this.pcWidth + 'px',
-          height: this.pcHeight + 'px',
-          'background-color': this.innerColor,
-          'border-radius': '50%',
-          '-moz-border-radius': '50%',
-          '-webkit-border-radius': '50%'
-        }
+          position: 'absolute'
+        },
+        r: this.pcHeight > 20 ? (this.pcHeight - 20) / 2 : (this.pcHeight - 5) / 2
       }
     }
   }

@@ -20,11 +20,14 @@
                @clickSvg="clickSvg"
     ></innerSvg>
   </outer>
+    <!--hover出现的选中关系图标-->
+    <outerRelation v-if="showBoor" ref="outerRelation" :top="svg.top" :left="svg.left"></outerRelation>
  </div>
 </template>
 <script>
   import innerSvg from '@/components/common/innerSvg'
   import outer from '@/components/common/outer'
+  import outerRelation from '@/components/common/outerRelation'
 
   export default {
     name: 'pc-svg',
@@ -102,10 +105,17 @@
     },
     components: {
       outer,
+      outerRelation,
       innerSvg
     },
     data: function () {
       return {
+        showBoor: true, // 是否显示关系列表
+        svg: { // 显示关系列表的图形
+          cardId: '123123',
+          left: '100px',
+          top: '100px'
+        }
       }
     },
     methods: {

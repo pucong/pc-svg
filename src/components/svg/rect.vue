@@ -1,8 +1,12 @@
 <!--这是矩形-->
 <template>
     <div v-bind:style='innerStyleObject'>
-
-    </div>
+      <svg width="100%" height="100%" version="1.1"
+           xmlns="http://www.w3.org/2000/svg">
+        <rect :width="pcWidth" :height="pcHeight"
+              :style="{fill:innerColor, 'stroke-width':1, stroke:'black' }"/>
+      </svg>
+  </div>
 </template>
 <script>
   export default {
@@ -24,10 +28,7 @@
     data () {
       return {
         innerStyleObject: { // 内部样式
-          position: 'absolute',
-          width: this.pcWidth + 'px',
-          height: this.pcHeight + 'px',
-          'background-color': this.innerColor
+          position: 'absolute'
         }
       }
     }

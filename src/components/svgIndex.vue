@@ -89,7 +89,6 @@
           svg.pcHeight = 80
         }
         svg = $.extend({}, this.$store.getters['pcSvgStore/GET_PCSVG_OPT'], svg)
-        console.log(svg.zIndex)
         this.pcSvgList.push(svg)
       }
     },

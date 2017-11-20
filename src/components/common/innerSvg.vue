@@ -4,9 +4,6 @@
     <pcCircle   :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='circle'"></pcCircle>
     <pcRect     :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='rect'"></pcRect>
     <pcTriangle :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='triangle'"></pcTriangle>
-    <dTriangle  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='dTriangle'"></dTriangle>
-    <lTriangle  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='lTriangle'"></lTriangle>
-    <rTriangle  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='rTriangle'"></rTriangle>
     <pcDiamond  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='diamond'"></pcDiamond>
     <pcTrapezium  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='trapezium'"></pcTrapezium>
     <pcParallelogram  :pc-height='pcHeight' :pc-width='pcWidth' :inner-color='innerColor' v-if="type=='parallelogram'"></pcParallelogram>
@@ -22,9 +19,6 @@
   import pcCircle from '@/components/svg/circle'
   import pcRect from '@/components/svg/rect'
   import pcTriangle from '@/components/svg/triangle'
-  import dTriangle from '@/components/svg/dTriangle'
-  import lTriangle from '@/components/svg/lTriangle'
-  import rTriangle from '@/components/svg/rTriangle'
   import pcDiamond from '@/components/svg/diamond'
   import pcTrapezium from '@/components/svg/trapezium'
   import pcParallelogram from '@/components/svg/parallelogram'
@@ -98,9 +92,6 @@
       pcCircle,
       pcRect,
       pcTriangle,
-      dTriangle,
-      lTriangle,
-      rTriangle,
       pcDiamond,
       pcTrapezium,
       pcParallelogram,
@@ -110,6 +101,8 @@
       return {
         OutStyleObject: { // 外层样式
           border: '0px dotted black',
+          width: this.pcWidth + 'px',
+          height: this.pcHeight + 'px',
           'margin-top': '5px',
           'padding-top': '2px',
           'z-index': '100',

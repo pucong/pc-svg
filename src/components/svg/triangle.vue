@@ -1,8 +1,12 @@
 <!--这是正三角形-->
 <template>
-    <div v-bind:style='innerStyleObject'>
-
-    </div>
+  <div v-bind:style='innerStyleObject'>
+    <svg width="100%" height="100%" version="1.1"
+         xmlns="http://www.w3.org/2000/svg">
+      <polygon :points="potions"
+               :style="{fill:innerColor, 'stroke-width':1, stroke:'black' }" />
+    </svg>
+  </div>
 </template>
 <script>
   export default {
@@ -24,13 +28,16 @@
     data () {
       return {
         innerStyleObject: { // 内部样式
-          position: 'absolute',
-          width: '0',
-          height: '0',
-          'border-bottom': this.pcWidth + 'px solid rgba(53, 109, 222, 0.3)',
-          'border-left': this.pcHeight / 2 + 'px solid transparent',
-          'border-right': this.pcHeight / 2 + 'px solid transparent'
+          position: 'absolute'
         }
+      }
+    },
+    computed: {
+      potions () {
+        var str = '0,' + this.pcHeight + ' '
+        str += this.pcWidth * 0.5 + ',0 '
+        str += this.pcWidth + ',' + this.pcHeight
+        return str
       }
     }
   }

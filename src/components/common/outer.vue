@@ -60,7 +60,7 @@
     data () {
       return {
         cardStyleObject: {  // card位置的样式
-          width: this.pcWidth + 10 + 'px',
+          width: this.svgType === 3 ? this.pcWidth + 30 + 'px' : this.pcWidth + 10 + 'px',
           height: this.shwFootFont ? this.pcHeight + 60 + 'px' : this.pcHeight + 10 + 'px',
           float: 'left',
           'margin-left': '2px',
