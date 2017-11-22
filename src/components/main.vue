@@ -96,7 +96,6 @@
       },
       // 取消hover事件
       outerHoverDis (opt) {
-        this.showBoor = true
       },
       typeThreeSvgMove () {
         this.outerHoverDis()

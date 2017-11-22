@@ -7,9 +7,6 @@
       <pcSvg type="circle"        inner-color="rgba(53, 109, 222, 0.54)" :svg-type="2" @clickSvg="clickSvg" :card-id="getUuid()"></pcSvg>
       <pcSvg type="rect"          inner-color="rgba(53, 109, 222, 0.3)"  :svg-type="2" @clickSvg="clickSvg" :card-id="getUuid()"></pcSvg>
       <pcSvg type="triangle"      inner-color="rgba(53, 109, 222, 0.3)"  :svg-type="2" @clickSvg="clickSvg" :card-id="getUuid()"></pcSvg>
-      <pcSvg type="dTriangle"     inner-color="rgba(53, 109, 222, 0.3)"  :svg-type="2" @clickSvg="clickSvg" :card-id="getUuid()"></pcSvg>
-      <pcSvg type="lTriangle"     inner-color="rgba(53, 109, 222, 0.3)"  :svg-type="2" @clickSvg="clickSvg" :card-id="getUuid()"></pcSvg>
-      <pcSvg type="rTriangle"     inner-color="rgba(53, 109, 222, 0.3)"  :svg-type="2" @clickSvg="clickSvg" :card-id="getUuid()"></pcSvg>
       <pcSvg type="diamond"       inner-color="rgba(53, 109, 222, 0.3)"  :svg-type="2" @clickSvg="clickSvg" :card-id="getUuid()"></pcSvg>
       <pcSvg type="trapezium"     inner-color="rgba(53, 109, 222, 0.3)"  :svg-type="2" @clickSvg="clickSvg" :card-id="getUuid()"></pcSvg>
       <pcSvg type="parallelogram" inner-color="rgba(53, 109, 222, 0.3)"  :svg-type="2" @clickSvg="clickSvg" :card-id="getUuid()"></pcSvg>

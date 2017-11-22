@@ -162,6 +162,7 @@
           event: e
         }
         this.$emit('outerHoverDis', opt)
+        this.showBoor = false
       },
       typeThreeSvgMove () {
         this.$emit('typeThreeSvgMove', this.cardId) // 触发移动事件
