@@ -1,12 +1,14 @@
 <!--这是菱形-->
 <template>
-    <div v-bind:style='innerStyleObject'>
-
-    </div>
+  <div v-bind:style='innerStyleObject'>
+    <svg width="100%" height="100%" version="1.1"
+         xmlns="http://www.w3.org/2000/svg">
+      <polygon :points="potions"
+               :style="{fill:innerColor, 'stroke-width':1, stroke:'black' }" />
+    </svg>
+  </div>
 </template>
 <script>
-  import util from '@/util.js'
-
   export default {
     name: 'diamond',
     props: {
@@ -26,33 +28,20 @@
     data () {
       return {
         innerStyleObject: { // 内部样式
-          position: 'absolute',
-          width: this.getLeft() + 'px',
-          height: this.getLeft() + 'px',
-          'background-color': this.innerColor,
-          /* Rotate */
-          '-webkit-transform': 'rotate(-45deg)',
-          '-moz-transform': 'rotate(-45deg)',
-          '-ms-transform': 'rotate(-45deg)',
-          '-o-transform': 'rotate(-45deg)',
-          'transform': 'rotate(-45deg)',
-          /* Rotate Origin */
-          '-webkit-transform-origin': '75% 20%',
-          '-moz-transform-origin': '75% 20%',
-          '-ms-transform-origin': '75% 20%',
-          '-o-transform-origin': '75% 20%',
-          'transform-origin': '75% 20%'
+          position: 'absolute'
         }
       }
     },
     methods: {
-        // 计算菱形的边长
-      getLeft: function () {
-        var height = this.pcHeight
-//        var width = this.pcWidth
-        // 根据勾股定理，计算边长
-        var three = util.gouGuFunctionThree(height)
-        return three
+    },
+    computed: {
+      potions () {
+        var str = '0,' + this.pcHeight / 2 + ' '
+        str += this.pcWidth * 0.5 + ',0 '
+        str += this.pcWidth + ',' + this.pcHeight / 2 + ' '
+        str += this.pcWidth * 0.5 + ',' + this.pcHeight + ' '
+        str += '0,' + this.pcHeight / 2 + ' '
+        return str
       }
     }
   }
