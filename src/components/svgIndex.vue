@@ -61,7 +61,7 @@
         // 获取鼠标当前位置
         const point = util.getMousePosition()
         // 设置初始位置
-        const pcSvgMainContainerOpt = this.$store.getters['pcSvgStore/GET_PCSVG_MAIN_CONTAINER_OPT'].top
+        const pcSvgMainContainerOpt = this.$store.getters['pcSvgStore/GET_PCSVG_MAIN_CONTAINER_OPT']
         this.clickSvgPosition.xx = (point.xx - parseInt(pcSvgMainContainerOpt.left)) / 2
         this.clickSvgPosition.yy = (point.yy - parseInt(pcSvgMainContainerOpt.top)) / 2
       },

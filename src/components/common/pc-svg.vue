@@ -21,13 +21,20 @@
     ></innerSvg>
   </outer>
     <!--hover出现的选中关系图标-->
-    <outerRelation v-if="showBoor" ref="outerRelation" :top="svg.top" :left="svg.left"></outerRelation>
+    <el-collapse-transition>
+      <outerRelation v-if="showBoor || whetherHover" ref="outerRelation"
+                     :top="svg.top" :left="svg.left"
+                     @relationMouseover="relationMouseover"
+                     @relationMouseOut="relationMouseOut"
+      ></outerRelation>
+    </el-collapse-transition>
  </div>
 </template>
 <script>
   import innerSvg from '@/components/common/innerSvg'
   import outer from '@/components/common/outer'
   import outerRelation from '@/components/common/outerRelation'
+  import util from '@/util.js'
 
   export default {
     name: 'pc-svg',
@@ -110,7 +117,8 @@
     },
     data: function () {
       return {
-        showBoor: true, // 是否显示关系列表
+        showBoor: false, // 是否显示关系列表
+        whetherHover: false, // 是否hover右侧框
         svg: { // 显示关系列表的图形
           cardId: '123123',
           left: '100px',
@@ -136,35 +144,44 @@
       // hover事件触发
       outerHover (e) {
         if (this.svgType === 3) {
-          const opt = {
-            svg: {
-              cardId: this.cardId,
-              left: this.$refs.outer.getPosition().left,
-              top: this.$refs.outer.getPosition().top,
-              pcWidth: this.pcWidth,
-              pcHeight: this.pcHeight
-            },
-            event: e
+          var opt = {
+            cardId: util.getUuid('svgBoor'),
+            left: this.$refs.outer.getPosition().left,
+            top: this.$refs.outer.getPosition().top,
+            pcWidth: this.pcWidth,
+            pcHeight: this.pcHeight
           }
-          this.$emit('outerHover', opt)
+          if (opt.left) {
+            opt.left = parseInt(opt.left) + opt.pcWidth + 20 + 'px'
+          }
+          if (opt.top) {
+            opt.top = parseInt(opt.top) + 'px'
+          }
+          this.svg = opt
+          this.showBoor = true
         }
       },
       // 取消hover事件
       outerHoverDis (e) {
-        const opt = {
-          svg: {
-            cardId: this.cardId,
-            left: this.left,
-            top: this.top,
-            pcWidth: this.pcWidth,
-            pcHeight: this.pcHeight
-          },
-          event: e
+        if (this.showBoor) {
+          const _this = this
+          setTimeout(() => {
+            if (!_this.whetherHover) {
+              _this.showBoor = false
+            }
+          }, 300)
+          console.log('2')
         }
-        this.$emit('outerHoverDis', opt)
+      },
+      relationMouseover () {
+        this.whetherHover = true
+      },
+      relationMouseOut () {
         this.showBoor = false
+        this.whetherHover = false
       },
       typeThreeSvgMove () {
+        this.relationMouseOut()
         this.$emit('typeThreeSvgMove', this.cardId) // 触发移动事件
       }
     }

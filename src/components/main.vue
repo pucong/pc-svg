@@ -17,9 +17,7 @@
              :input-font="svg.inputFont"
              :options="svg.options"
              :position="svg.position"
-             @typeThreeSvgMove="typeThreeSvgMove"
-             @outerHover="outerHover"
-             @outerHoverDis="outerHoverDis">
+             @typeThreeSvgMove="typeThreeSvgMove">
       </pcSvg>
     </pcScroller>
   </div>
@@ -28,9 +26,7 @@
   import pcSvg from '@/components/common/pc-svg'
   import pcRelation from '@/components/common/pc-relation'
   import pcScroller from '@/components/other/pcScoller'
-
   import $ from 'jquery'
-  import util from '@/util.js'
 
   export default {
     name: 'main',
@@ -79,26 +75,7 @@
           val: this.scaleNum
         })
       },
-      // hover事件触发
-      outerHover (optOne) {
-        var opt = optOne.svg
-        if (!opt.cardId) {
-          opt.cardId = util.getUuid('svgBoor')
-        }
-        if (opt.left) {
-          opt.left = parseInt(opt.left) + opt.pcWidth + 'px'
-        }
-        if (opt.top) {
-          opt.top = parseInt(opt.top) + 'px'
-        }
-        this.svg = opt
-        this.showBoor = true
-      },
-      // 取消hover事件
-      outerHoverDis (opt) {
-      },
       typeThreeSvgMove () {
-        this.outerHoverDis()
       }
     },
     mounted: function () {

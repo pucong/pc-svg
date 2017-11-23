@@ -1,7 +1,7 @@
 <template>
   <!--<div v-bind:style="relationDivClass">-->
-  <div v-bind:style="{'top': this.getTop, 'left': this.getLeft}" class="relationDivClass" v-on:mouseover="relationMouseover($event)">
-
+  <div v-bind:style="{'top': this.getTop, 'left': this.getLeft}" class="relationDivClass"
+       v-on:mouseover="relationMouseover($event)" v-on:mouseout="relationMouseOut($event)">
   </div>
 </template>
 <script>
@@ -27,7 +27,11 @@
     },
     methods: {
       relationMouseover (e) {
-        console.log(e)
+        this.$emit('relationMouseover', e)
+      },
+      relationMouseOut (e) {
+        this.$emit('relationMouseOut', e)
+        console.log('out')
       }
     },
     computed: {
