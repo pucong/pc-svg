@@ -31,7 +31,6 @@
       },
       relationMouseOut (e) {
         this.$emit('relationMouseOut', e)
-        console.log('out')
       }
     },
     computed: {

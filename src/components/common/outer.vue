@@ -114,9 +114,7 @@
         model._x = _x
         model._y = _y
         // 如果是点击出现的图形，则使其消失
-        if (_this.showClickSvg) {
-          _this.$emit('showSvgClick', this.type) // 触发点击图形消失事件
-        }
+        _this.$emit('svgClick', this.type) // 触发点击图形消失事件
       })
       $(document).mousemove(function (e) {
         util.setMousePosition({xx: e.pageX, yy: e.pageY})

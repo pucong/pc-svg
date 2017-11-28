@@ -2,7 +2,7 @@
   <div>
   <outer :left='left' :top='top' :pc-width='pcWidth' :pc-height='pcHeight' :card-id='cardId' :svg-type='svgType' :show-click-svg='showClickSvg'
            :position='position' :z-index="zIndex" :inner-color='innerColor' :shw-foot-font='shwFootFont'
-         @showSvgClick="showSvgClick" @typeThreeSvgMove="typeThreeSvgMove" ref="outer" @outerHover="outerHover"  @outerHoverDis="outerHoverDis">
+         @svgClick="svgClick" @typeThreeSvgMove="typeThreeSvgMove" ref="outer" @outerHover="outerHover"  @outerHoverDis="outerHoverDis">
     <innerSvg :card-id='cardId'
               :inner-color='innerColor'
               :left='left'
@@ -133,9 +133,11 @@
           this.$emit('clickSvg', this.type) // 触发事件
         }
       },
-      showSvgClick: function () { // 触发图形消失事件
+      svgClick: function () { // 触发图形消失事件
         if (this.svgType === 1) {
           this.$emit('showSvgClick', this.type) // 触发事件
+        } else if (this.svgType === 3) {
+
         }
       },
       getPosition: function () {
@@ -170,7 +172,6 @@
               _this.showBoor = false
             }
           }, 300)
-          console.log('2')
         }
       },
       relationMouseover () {
